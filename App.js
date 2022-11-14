@@ -28,7 +28,7 @@ export default function App() {
                     />
                 </Stack.Navigator>
             </NavigationContainer> */}
-      <HomeScreen />
+      <MainScreen />
     </NativeBaseProvider>
   );
 }

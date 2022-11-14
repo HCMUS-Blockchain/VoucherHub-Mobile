@@ -5,6 +5,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons } from "@expo/vector-icons";
 import Header from "../../components/Header";
 import HorizontalScrollViewFilter from "../../components/HorizontalScrollViewFilter";
+import HomeScreen from "./HomeScreen";
 function VoucherScreen() {
   return (
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
@@ -76,7 +77,7 @@ export default function MainScreen() {
             headerShown: false,
           })}
         >
-          {/* <Tab.Screen name="Home" component={HomeScreen} /> */}
+          <Tab.Screen name="Home" component={HomeScreen} />
           <Tab.Screen name="Vouchers" component={VoucherScreen} />
           <Tab.Screen name="Locations" component={LocationScreen} />
           <Tab.Screen name="Profile" component={ProfileScreen} />

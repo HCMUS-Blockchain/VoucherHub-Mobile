@@ -7,11 +7,15 @@ import {
   VStack,
   HStack,
   Flex,
+  Pressable,
 } from "native-base";
 import { Ionicons } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
+
 const Voucher = () => {
+  const navigation = useNavigation();
   return (
-    <Box
+    <Pressable
       w="237"
       h="235"
       rounded="lg"
@@ -20,6 +24,9 @@ const Voucher = () => {
       borderWidth="1"
       mr="5"
       mt="5"
+      onPress={() => {
+        navigation.navigate("DetailScreen");
+      }}
     >
       <Box mr="3" ml="3">
         <Flex>
@@ -32,7 +39,7 @@ const Voucher = () => {
             position="relative"
           />
           <VStack
-            bgColor="#ffffff"
+            bgColor="red.100"
             w="47"
             borderRadius="10"
             position="absolute"
@@ -116,7 +123,7 @@ const Voucher = () => {
           </Text>
         </HStack>
       </Box>
-    </Box>
+    </Pressable>
   );
 };
 

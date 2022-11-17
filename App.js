@@ -1,13 +1,6 @@
 import { NativeBaseProvider } from "native-base/src/core/NativeBaseProvider";
-import React from "react";
-import LoginScreen from "./src/screens/LoginScreen";
+import React, { useEffect, useState } from "react";
 import { NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { Ionicons } from "@expo/vector-icons";
-import RegisterScreen from "./src/screens/RegisterScreen";
-import SplashScreen from "./src/screens/SplashScreen";
-import OnLoadingScreen from "./src/screens/OnLoadingScreen";
-import BottomNavs from "./navigations/BottomNav";
 import MainScreen from "./src/screens/MainScreen";
 import Voucher from "./components/VoucherHomeScreen";
 import HomeScreen from "./src/screens/HomeScreen";
@@ -16,55 +9,36 @@ import VoucherDetail from "./components/VoucherDetail";
 import VoucherListScreen from "./src/screens/VoucherListScreen";
 import VoucherItem from "./components/VoucherItem";
 const Stack = createNativeStackNavigator();
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import clients from "./src/api/clients";
+import StackNavigator from "./navigations/StackNavigator";
+import BottomNav from "./navigations/BottomNav";
+
 export default function App() {
+  const [isLogin, setIsLogin] = useState(false);
+  const fetchUser = async () => {
+    const token = await AsyncStorage.getItem("token");
+    console.log(token);
+    if (token) {
+      const user = await clients.get("/users/profile", {
+        headers: {
+          Authorization: `JWT ${token}`,
+        },
+      });
+      if (user.data.success) {
+        console.log(user.data);
+        setIsLogin(true);
+      }
+    }
+  };
+  useEffect(() => {
+    fetchUser();
+  }, []);
   return (
     <NativeBaseProvider>
       <NavigationContainer>
-        <Stack.Navigator initialRouteName="BottomNavs">
-          <Stack.Screen
-            name="SplashScreen"
-            component={SplashScreen}
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen
-            name="LoginScreen"
-            component={LoginScreen}
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen
-            name="OnLoadingScreen"
-            component={OnLoadingScreen}
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen
-            name="RegisterScreen"
-            component={RegisterScreen}
-            options={{
-              title: "Register", //Set Header Title
-              headerTitle: "",
-              headerTransparent: true,
-            }}
-          />
-          <Stack.Screen
-            name="BottomNavs"
-            component={BottomNavs}
-            options={{ headerShown: false }}
-          />
-
-          <Stack.Screen
-            name="DetailScreen"
-            component={DetailScreen}
-            options={{
-              title: "Voucher Detail",
-              headerTransparent: true,
-              headerRight: () => (
-                <Ionicons name="bookmark" size={24} color="black" />
-              ),
-            }}
-          />
-        </Stack.Navigator>
+        {isLogin ? <BottomNav /> : <StackNavigator />}
       </NavigationContainer>
-      {/* <VoucherItem /> */}
     </NativeBaseProvider>
   );
 }

@@ -1,4 +1,4 @@
-import {useEffect, useState} from 'react';
+import {useState} from 'react';
 import colors from "../constants/colors";
 import {
     Box,
@@ -10,31 +10,47 @@ import {
     Icon,
     Image,
     Input,
-    Link,
     Pressable,
     Text,
     VStack
 } from 'native-base';
 import {FontAwesome} from '@expo/vector-icons';
 import {StyleSheet} from "react-native";
+import Loader from "../components/Loader";
+import {SignIn} from "../api/user";
 
 const LoginScreen = ({navigation}) => {
     const [show, setShow] = useState(false);
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [errors, setErrors] = useState("");
-    useEffect(() => {
-        if (email.length > 0 && password.length > 0) {
-            setErrors("");
-        }
-    }, [email, password]);
-    const validate = () => {
-        if (email === "" || password === "") {
-            setErrors("Please do not let blank input");
+    const [loading, setLoading] = useState(false);
+    const signIn = async () => {
+        //Show Loader
+        setLoading(true);
+        try {
+            const response = await SignIn(email, password);
+            //Hide Loader
+            if (response.data.success) {
+                setLoading(false);
+                navigation.navigate("MainScreen");
+                setErrors("");
+                setEmail("");
+                setPassword("");
+            }
+        } catch (e) {
+            if (e.response) {
+                if (e.response?.data?.error){
+                    //Hide Loader
+                    setLoading(false);
+                    setErrors(e.response.data.error);
+                }
+            }
         }
     }
     return (
         <Center style={styles.container} w="100%">
+            <Loader loading={loading} />
             <Image alt="Logo" source={require('../assets/img/logo.png')}/>
             <Box safeArea p="2" py="8" w="90%" maxW="290">
                 <Heading mt="-10" size="lg" fontWeight="600" color="coolGray.800" _dark={{
@@ -73,16 +89,16 @@ const LoginScreen = ({navigation}) => {
                             alignSelf="flex-end" mt="1">
                             Forgot Your Password?
                         </Text>
+                        <HStack justifyContent="center">
+                            {errors !== "" ? <Text style={styles.error}>{errors}</Text> : null}
+                        </HStack>
                     </FormControl>
                     <Button
-                        onPress={validate}
+                        onPress={signIn}
                         rightIcon={<Icon as={FontAwesome} size={3} name="arrow-circle-right" color="white"/>}
                         mt="2" style={styles.colorDanger}>
                         <Text style={styles.btnTxt}>Sign In</Text>
                     </Button>
-                    <HStack justifyContent="center">
-                        {errors !== "" ? <Text style={styles.error}>{errors}</Text> : null}
-                    </HStack>
                     <HStack mt="2" justifyContent="center">
                         <Text fontSize="sm" color="coolGray.600" _dark={{
                             color: "warmGray.200"

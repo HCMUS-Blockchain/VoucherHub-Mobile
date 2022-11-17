@@ -1,6 +1,6 @@
 import { Heading, Box, VStack, Input, ScrollView } from "native-base";
 import { Ionicons } from "@expo/vector-icons";
-import HorizontalScrollViewFilter from "../../components/HorizontalScrollViewFilter";
+import HorizontalScrollViewFilter from "../components/HorizontalScrollViewFilter";
 import VoucherItem from "../../components/VoucherItem";
 const VoucherListScreen = () => {
   return (

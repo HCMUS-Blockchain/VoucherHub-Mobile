@@ -4,6 +4,7 @@ import { Ionicons } from "@expo/vector-icons";
 import HomeScreen from "../src/screens/HomeScreen";
 import MainScreen from "../src/screens/MainScreen";
 import VoucherListScreen from "../src/screens/VoucherListScreen";
+import ProfileScreen from "../src/screens/ProfileScreen";
 
 function LocationScreen() {
   return (

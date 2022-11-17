@@ -15,7 +15,7 @@ import {
 } from "native-base";
 import { Ionicons } from "@expo/vector-icons";
 
-import VoucherDetail from "../../components/VoucherDetail";
+import VoucherDetail from "../components/VoucherDetail";
 const DetailScreen = () => {
   return (
     <>

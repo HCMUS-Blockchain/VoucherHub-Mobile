@@ -1,14 +1,6 @@
 import { NativeBaseProvider } from "native-base/src/core/NativeBaseProvider";
 import React, { useEffect, useState } from "react";
 import { NavigationContainer } from "@react-navigation/native";
-import MainScreen from "./src/screens/MainScreen";
-import Voucher from "./components/VoucherHomeScreen";
-import HomeScreen from "./src/screens/HomeScreen";
-import DetailScreen from "./src/screens/DetailScreen";
-import VoucherDetail from "./components/VoucherDetail";
-import VoucherListScreen from "./src/screens/VoucherListScreen";
-import VoucherItem from "./components/VoucherItem";
-const Stack = createNativeStackNavigator();
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import clients from "./src/api/clients";
 import StackNavigator from "./navigations/StackNavigator";
@@ -37,7 +29,7 @@ export default function App() {
   return (
     <NativeBaseProvider>
       <NavigationContainer>
-        {isLogin ? <BottomNav /> : <StackNavigator />}
+        {isLogin ? <StackNavigator /> : <BottomNav />}
       </NavigationContainer>
     </NativeBaseProvider>
   );

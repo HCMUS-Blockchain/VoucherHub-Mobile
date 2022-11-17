@@ -15,7 +15,7 @@ const VoucherItem = () => {
           w="100"
           h="100"
           alignSelf="center"
-          source={require("../src/assets/img/image87.png")}
+          source={require("../assets/img/image87.png")}
         />
         <VStack w="250" ml="2">
           <Text>Discount 50%</Text>

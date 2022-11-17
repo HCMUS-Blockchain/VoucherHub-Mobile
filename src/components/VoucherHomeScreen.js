@@ -35,7 +35,7 @@ const Voucher = () => {
             alt="Logo"
             borderRadius="20"
             mt="1"
-            source={require("../src/assets/img/image80.png")}
+            source={require("../assets/img/image80.png")}
             position="relative"
           />
           <VStack

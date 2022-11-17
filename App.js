@@ -12,6 +12,7 @@ import MainScreen from "./src/screens/MainScreen";
 import Voucher from "./components/Voucher";
 import HomeScreen from "./src/screens/HomeScreen";
 import DetailScreen from "./src/screens/DetailScreen";
+import VoucherDetail from "./components/VoucherDetail";
 
 const Stack = createNativeStackNavigator();
 export default function App() {
@@ -62,6 +63,7 @@ export default function App() {
           />
         </Stack.Navigator>
       </NavigationContainer>
+      {/* <DetailScreen /> */}
     </NativeBaseProvider>
   );
 }

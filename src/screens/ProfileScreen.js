@@ -19,7 +19,7 @@ function ProfileScreen() {
                     <View style={{justifyContent: "center", alignItems: "center"}}>
                         <Avatar.Image
                             source={{
-                                uri: 'https://api.adorable.io/avatars/80/abott@adorable.png',
+                                uri: 'https://scontent.fsgn3-1.fna.fbcdn.net/v/t1.18169-9/18882161_1826356687682036_2261045024222387600_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=8bfeb9&_nc_ohc=iRZE2nZR090AX9ve0GQ&_nc_ht=scontent.fsgn3-1.fna&oh=00_AfBg4dYYV2Sa2Ev3QFgOUwxN9DlFOJjYTAYDM0PusqQNNQ&oe=639D371D',
                             }}
                             size={80}
                         />
@@ -95,6 +95,13 @@ function ProfileScreen() {
                     <View style={styles.menuItem}>
                         <Icon name="cookie-settings-outline" color="#FF6347" size={25}/>
                         <Text style={styles.menuItemText}>Settings</Text>
+                    </View>
+                </TouchableRipple>
+                <TouchableRipple onPress={() => {
+                }}>
+                    <View style={styles.menuItem}>
+                        <Icon name="logout-variant" color="#FF6347" size={25}/>
+                        <Text style={styles.menuItemText}>Log out</Text>
                     </View>
                 </TouchableRipple>
             </View>

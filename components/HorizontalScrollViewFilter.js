@@ -6,7 +6,11 @@ import Item from "./FilterItem";
 const HorizontalScrollViewFilter = () => {
   return (
     <Box h="12" w="100%" mt="-6">
-      <ScrollView w="100%" horizontal={true}>
+      <ScrollView
+        w="100%"
+        horizontal={true}
+        showsVerticalScrollIndicator={false}
+      >
         <VStack flex="1" direction="row" h="12">
           {filterItem.map((key, index) => {
             return (

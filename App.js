@@ -9,11 +9,12 @@ import SplashScreen from "./src/screens/SplashScreen";
 import OnLoadingScreen from "./src/screens/OnLoadingScreen";
 import BottomNavs from "./navigations/BottomNav";
 import MainScreen from "./src/screens/MainScreen";
-import Voucher from "./components/Voucher";
+import Voucher from "./components/VoucherHomeScreen";
 import HomeScreen from "./src/screens/HomeScreen";
 import DetailScreen from "./src/screens/DetailScreen";
 import VoucherDetail from "./components/VoucherDetail";
-
+import VoucherListScreen from "./src/screens/VoucherListScreen";
+import VoucherItem from "./components/VoucherItem";
 const Stack = createNativeStackNavigator();
 export default function App() {
   return (
@@ -63,7 +64,7 @@ export default function App() {
           />
         </Stack.Navigator>
       </NavigationContainer>
-      {/* <DetailScreen /> */}
+      {/* <VoucherItem /> */}
     </NativeBaseProvider>
   );
 }

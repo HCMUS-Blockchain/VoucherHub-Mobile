@@ -1,6 +1,6 @@
 import { ScrollView, VStack, Box } from "native-base";
 import React from "react";
-import filterItem from "../contants/filter";
+import filterItem from "../src/constants/filter";
 import Item from "./FilterItem";
 
 const HorizontalScrollViewFilter = () => {

@@ -13,9 +13,10 @@ import {
 } from "native-base";
 import { Ionicons } from "@expo/vector-icons";
 import Voucher from "../../components/Voucher";
+
 const HomeScreen = () => {
   return (
-    <ScrollView>
+    <ScrollView showsVerticalScrollIndicator={false}>
       <Box px="5" bgColor="white">
         <Flex justify="space-between" align="center" direction="row" w="100%">
           <Heading size="sm">Upcoming Events</Heading>
@@ -24,8 +25,11 @@ const HomeScreen = () => {
             <Ionicons name="arrow-forward" size={24} color="black" />
           </Flex>
         </Flex>
-        <ScrollView w="100%" horizontal={true}>
-          <Voucher />
+        <ScrollView
+          w="100%"
+          horizontal={true}
+          showsVerticalScrollIndicator={false}
+        >
           <Voucher />
           <Voucher />
         </ScrollView>

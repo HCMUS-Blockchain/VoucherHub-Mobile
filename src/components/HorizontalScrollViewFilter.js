@@ -1,12 +1,16 @@
 import { ScrollView, VStack, Box } from "native-base";
 import React from "react";
-import filterItem from "../src/constants/filter";
+import filterItem from "../constants/filter";
 import Item from "./FilterItem";
 
 const HorizontalScrollViewFilter = () => {
   return (
     <Box h="12" w="100%" mt="-6">
-      <ScrollView w="100%" horizontal={true}>
+      <ScrollView
+        w="100%"
+        horizontal={true}
+        showsVerticalScrollIndicator={false}
+      >
         <VStack flex="1" direction="row" h="12">
           {filterItem.map((key, index) => {
             return (

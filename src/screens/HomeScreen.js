@@ -12,8 +12,7 @@ import {
   VStack,
 } from "native-base";
 import { Ionicons } from "@expo/vector-icons";
-import Voucher from "../../components/Voucher";
-
+import Voucher from "../components/VoucherHomeScreen";
 const HomeScreen = () => {
   return (
     <ScrollView showsVerticalScrollIndicator={false}>

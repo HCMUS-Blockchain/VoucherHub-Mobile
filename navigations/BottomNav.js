@@ -1,16 +1,10 @@
-import {Text, View} from "react-native";
-import {createBottomTabNavigator} from "@react-navigation/bottom-tabs";
-import {Ionicons} from "@expo/vector-icons";
+import { Text, View } from "react-native";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { Ionicons } from "@expo/vector-icons";
+import HomeScreen from "../src/screens/HomeScreen";
 import MainScreen from "../src/screens/MainScreen";
+import VoucherListScreen from "../src/screens/VoucherListScreen";
 import ProfileScreen from "../src/screens/ProfileScreen";
-
-function VoucherScreen() {
-  return (
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <Text>Voucher!</Text>
-    </View>
-  );
-}
 
 function LocationScreen() {
   return (
@@ -60,7 +54,7 @@ const BottomNavs = () => {
       })}
     >
       <Tab.Screen name="Home" component={MainScreen} />
-      <Tab.Screen name="Vouchers" component={VoucherScreen} />
+      <Tab.Screen name="Vouchers" component={VoucherListScreen} />
       <Tab.Screen name="Locations" component={LocationScreen} />
       <Tab.Screen name="Profile" component={ProfileScreen} />
     </Tab.Navigator>

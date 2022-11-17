@@ -1,9 +1,7 @@
-import SplashScreen from "./SplashScreen";
-import LoginScreen from "./LoginScreen";
-import OnLoadingScreen from "./OnLoadingScreen";
-import SuccessLoginScreen from "./SuccessLoginScreen";
-import MainScreen from "./MainScreen";
-import RegisterScreen from "./RegisterScreen";
+import SplashScreen from "../src/screens/SplashScreen";
+import LoginScreen from "../src/screens/LoginScreen";
+import OnLoadingScreen from "../src/screens/OnLoadingScreen";
+import RegisterScreen from "../src/screens/RegisterScreen";
 import React from "react";
 import {createNativeStackNavigator} from "@react-navigation/native-stack";
 

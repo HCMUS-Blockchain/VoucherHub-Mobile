@@ -17,7 +17,7 @@ import {
 import {FontAwesome} from '@expo/vector-icons';
 import {StyleSheet} from "react-native";
 import Loader from "../components/Loader";
-import {SignIn} from "../../api/user";
+import {SignIn} from "../api/user";
 
 const LoginScreen = ({navigation}) => {
     const [show, setShow] = useState(false);

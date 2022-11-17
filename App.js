@@ -3,8 +3,9 @@ import React, {useEffect, useState} from "react";
 import {NavigationContainer} from "@react-navigation/native";
 import MainScreen from "./src/screens/MainScreen";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import clients from "./api/clients";
-import StackNavigator from "./src/screens/StackNavigator";
+import clients from "./src/api/clients";
+import StackNavigator from "./navigations/StackNavigator";
+import BottomNav from "./navigations/BottomNav";
 
 export default function App() {
     const [isLogin, setIsLogin] = useState(false);
@@ -29,7 +30,7 @@ export default function App() {
     return (
         <NativeBaseProvider>
             <NavigationContainer>
-                {isLogin ? <MainScreen/> : <StackNavigator/>}
+                {isLogin ? <BottomNav/> : <StackNavigator/>}
             </NavigationContainer>
         </NativeBaseProvider>
     );

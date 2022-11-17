@@ -3,7 +3,7 @@ import {Box, Button, Center, FormControl, Heading, HStack, Icon, Image, Input, T
 import {StyleSheet} from "react-native";
 import {FontAwesome} from "@expo/vector-icons";
 import colors from "../constants/colors";
-import clients from "../../api/clients";
+import clients from "../api/clients";
 import Loader from "../components/Loader";
 const RegisterScreen = ({navigation}) => {
     const [fullName, setFullName] = useState("");

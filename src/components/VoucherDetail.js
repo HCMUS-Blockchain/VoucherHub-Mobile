@@ -1,4 +1,4 @@
-import Voucher from "../src/assets/img/voucher_06.svg";
+import Voucher from "../assets/img/voucher_06.svg";
 import { Box, HStack, VStack } from "native-base";
 import { Text } from "react-native";
 const VoucherDetail = () => {

@@ -5,6 +5,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import clients from "./src/api/clients";
 import StackNavigator from "./navigations/StackNavigator";
 import BottomNav from "./navigations/BottomNav";
+import StackSubNavigator from "./navigations/StackSubNavigator";
 
 export default function App() {
   const [isLogin, setIsLogin] = useState(false);
@@ -29,7 +30,7 @@ export default function App() {
   return (
     <NativeBaseProvider>
       <NavigationContainer>
-        {isLogin ? <StackNavigator /> : <BottomNav />}
+        <StackSubNavigator />
       </NavigationContainer>
     </NativeBaseProvider>
   );

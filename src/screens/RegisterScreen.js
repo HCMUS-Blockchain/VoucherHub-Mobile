@@ -5,13 +5,16 @@ import {FontAwesome} from "@expo/vector-icons";
 import colors from "../constants/colors";
 import clients from "../api/clients";
 import Loader from "../components/Loader";
+import {useLogin} from "../context/LoginProvider";
+import {SignIn} from "../api/user";
+
 const RegisterScreen = ({navigation}) => {
+    const {isPending, setIsPending, setProfile} = useLogin()
     const [fullName, setFullName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
     const [errors, setErrors] = useState("");
-    const [loading, setLoading] = useState(false);
     useEffect(() => {
         if (email.length > 0 && password.length > 0 && confirmPassword.length > 0 && fullName.length > 0) {
             setErrors("");
@@ -19,7 +22,7 @@ const RegisterScreen = ({navigation}) => {
     }, [email, password]);
     const signUp = async () => {
         //Show Loader
-        setLoading(true);
+        setIsPending(true);
         const dataToSend = {
             fullName,
             email,
@@ -28,14 +31,23 @@ const RegisterScreen = ({navigation}) => {
         }
         try {
             const response = await clients.post('/users/create', dataToSend);
-            //Hide Loader
-            setLoading(false);
-            navigation.navigate("SuccessLoginScreen");
+            if (response.data.success) {
+                //Hide Loader
+                const response = await SignIn(email, password);
+                if (response.data.success) {
+                    setProfile(response.data.user)
+                    setIsPending(false);
+                    setErrors("");
+                    setEmail("");
+                    setPassword("");
+                }
+                navigation.navigate("SuccessLoginScreen");
+            }
         } catch (e) {
             if (e.response) {
-                if (e.response?.data?.error){
+                if (e.response?.data?.error) {
                     //Hide Loader
-                    setLoading(false);
+                    setIsPending(false);
                     setErrors(e.response.data.error);
                 }
             }
@@ -43,7 +55,7 @@ const RegisterScreen = ({navigation}) => {
     }
     return (
         <Center style={styles.container} w="100%">
-            <Loader loading={loading} />
+            <Loader loading={isPending}/>
             <Box safeArea p="2" w="90%" maxW="290">
                 <Heading size="lg" fontWeight="600" color="coolGray.800" _dark={{
                     color: "warmGray.50"
@@ -53,8 +65,10 @@ const RegisterScreen = ({navigation}) => {
 
                 <VStack space={5} mt="5">
                     <FormControl>
-                        <Input leftElement={<Icon as={FontAwesome} size={4} ml={3} name="user" color="black"/>
-                        } placeholder="Full name" size={3}/>
+                        <Input
+                            onChangeText={setFullName}
+                            leftElement={<Icon as={FontAwesome} size={4} ml={3} name="user" color="black"/>
+                            } placeholder="Full name" size={3}/>
                     </FormControl>
                     <FormControl>
                         <Input

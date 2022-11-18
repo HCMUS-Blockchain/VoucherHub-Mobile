@@ -18,22 +18,24 @@ import {FontAwesome} from '@expo/vector-icons';
 import {StyleSheet} from "react-native";
 import Loader from "../components/Loader";
 import {SignIn} from "../api/user";
+import {useLogin} from "../context/LoginProvider";
 
 const LoginScreen = ({navigation}) => {
+    const {setIsLogin,setProfile,isPending,setIsPending} = useLogin()
     const [show, setShow] = useState(false);
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [errors, setErrors] = useState("");
-    const [loading, setLoading] = useState(false);
     const signIn = async () => {
         //Show Loader
-        setLoading(true);
+        setIsPending(true);
         try {
             const response = await SignIn(email, password);
             //Hide Loader
             if (response.data.success) {
-                setLoading(false);
-                navigation.navigate("MainScreen");
+                setIsLogin(true)
+                setProfile(response.data.user)
+                setIsPending(false);
                 setErrors("");
                 setEmail("");
                 setPassword("");
@@ -42,7 +44,7 @@ const LoginScreen = ({navigation}) => {
             if (e.response) {
                 if (e.response?.data?.error){
                     //Hide Loader
-                    setLoading(false);
+                    setIsPending(false);
                     setErrors(e.response.data.error);
                 }
             }
@@ -50,7 +52,7 @@ const LoginScreen = ({navigation}) => {
     }
     return (
         <Center style={styles.container} w="100%">
-            <Loader loading={loading} />
+            <Loader loading={isPending} />
             <Image alt="Logo" source={require('../assets/img/logo.png')}/>
             <Box safeArea p="2" py="8" w="90%" maxW="290">
                 <Heading mt="-10" size="lg" fontWeight="600" color="coolGray.800" _dark={{

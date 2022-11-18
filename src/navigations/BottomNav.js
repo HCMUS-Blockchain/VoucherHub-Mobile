@@ -1,10 +1,9 @@
-import { Text, View } from "react-native";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { Ionicons } from "@expo/vector-icons";
-import HomeScreen from "../src/screens/HomeScreen";
-import MainScreen from "../src/screens/MainScreen";
-import VoucherListScreen from "../src/screens/VoucherListScreen";
-import ProfileScreen from "../src/screens/ProfileScreen";
+import {Text, View} from "react-native";
+import {createBottomTabNavigator} from "@react-navigation/bottom-tabs";
+import {Ionicons} from "@expo/vector-icons";
+import MainScreen from "../screens/MainScreen";
+import VoucherListScreen from "../screens/VoucherListScreen";
+import ProfileScreen from "../screens/ProfileScreen";
 
 function LocationScreen() {
   return (

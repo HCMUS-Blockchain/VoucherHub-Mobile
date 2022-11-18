@@ -12,3 +12,22 @@ export const SignIn = async (email, password) => {
         console.log(e)
     }
 }
+export const SignOut = async () => {
+    try{
+        const token = await AsyncStorage.getItem('token')
+        if (token !== null){
+            const res = await clients.get('/users/signout',{
+                headers:{
+                    Authorization:`JWT ${token}`
+                }
+            })
+            if (res.data.success){
+                await AsyncStorage.removeItem('token')
+                return true
+            }
+        }
+        return false
+    }catch (e){
+        console.log(e)
+    }
+}

@@ -1,8 +1,9 @@
-import {TouchableOpacity} from "react-native";
-import {StyleSheet} from "react-native";
+import {StyleSheet, TouchableOpacity} from "react-native";
 import {Image, Text, View} from "native-base";
+import {useLogin} from "../context/LoginProvider";
 
-const SuccessLoginScreen = ({navigation}) => {
+const SuccessLoginScreen = () => {
+    const {setIsLogin} = useLogin();
     return(
         <View
             style={{
@@ -25,8 +26,10 @@ const SuccessLoginScreen = ({navigation}) => {
             <TouchableOpacity
                 style={styles.buttonStyle}
                 activeOpacity={0.5}
-                onPress={() => navigation.navigate('LoginScreen')}>
-                <Text style={styles.buttonTextStyle}>Login Now</Text>
+                onPress={() =>{
+                    setIsLogin(true);
+                }}>
+                <Text style={styles.buttonTextStyle}>Enjoy Now</Text>
             </TouchableOpacity>
         </View>
     )

@@ -12,15 +12,21 @@ const LoginProvider = ({children}) => {
         setIsPending(true)
         const token = await AsyncStorage.getItem("token");
         if (token) {
-            const user = await clients.get("/users/profile", {
-                headers: {
-                    Authorization: `JWT ${token}`,
-                },
-            });
-            if (user.data.success) {
-                setIsLogin(true);
-                setProfile(user.data.profile)
-            }else{
+            try{
+                const user = await clients.get("/users/profile", {
+                    headers: {
+                        Authorization: `JWT ${token}`,
+                    },
+                });
+                if (user.data.success) {
+                    setIsLogin(true);
+                    setProfile(user.data.profile)
+                }else{
+                    setIsLogin(false)
+                    setProfile({})
+                }
+            }catch (e) {
+                console.log(e)
                 setIsLogin(false)
                 setProfile({})
             }
@@ -28,6 +34,7 @@ const LoginProvider = ({children}) => {
         }else{
             setIsLogin(false)
             setProfile({})
+            setIsPending(false)
         }
     };
     useEffect(() => {

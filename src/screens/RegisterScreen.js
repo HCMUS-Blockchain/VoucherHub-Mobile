@@ -1,5 +1,18 @@
 import React, {useEffect, useState} from 'react';
-import {Box, Button, Center, FormControl, Heading, HStack, Icon, Image, Input, Text, VStack} from 'native-base';
+import {
+    Box,
+    Button,
+    Center,
+    FormControl,
+    Heading,
+    HStack,
+    Icon,
+    Image,
+    Input,
+    Pressable,
+    Text,
+    VStack
+} from 'native-base';
 import {StyleSheet} from "react-native";
 import {FontAwesome} from "@expo/vector-icons";
 import colors from "../constants/colors";
@@ -7,6 +20,7 @@ import clients from "../api/clients";
 import Loader from "../components/Loader";
 import {useLogin} from "../context/LoginProvider";
 import {SignIn} from "../api/user";
+import { StackActions } from '@react-navigation/native';
 
 const RegisterScreen = ({navigation}) => {
     const {isPending, setIsPending, setProfile} = useLogin()
@@ -15,6 +29,8 @@ const RegisterScreen = ({navigation}) => {
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
     const [errors, setErrors] = useState("");
+    const [show, setShow] = useState(false);
+    const [showConfirm, setShowConfirm] = useState(false);
     useEffect(() => {
         if (email.length > 0 && password.length > 0 && confirmPassword.length > 0 && fullName.length > 0) {
             setErrors("");
@@ -36,12 +52,16 @@ const RegisterScreen = ({navigation}) => {
                 const response = await SignIn(email, password);
                 if (response.data.success) {
                     setProfile(response.data.user)
-                    setIsPending(false);
-                    setErrors("");
-                    setEmail("");
-                    setPassword("");
+                    navigation.dispatch(
+                        StackActions.replace('UploadImageScreen', {
+                            token: response.data.token,
+                        })
+                    );
                 }
-                navigation.navigate("SuccessLoginScreen");
+                setIsPending(false);
+                setErrors("");
+                setEmail("");
+                setPassword("");
             }
         } catch (e) {
             if (e.response) {
@@ -78,21 +98,27 @@ const RegisterScreen = ({navigation}) => {
                     </FormControl>
                     <FormControl>
                         <Input
-                            onChangeText={setPassword}
-                            type="password"
-                            leftElement={<Icon as={FontAwesome} size={3} ml={3} name="lock" color="black"/>}
+                            onChangeText={value => setPassword(value)}
+                            type={show ? "text" : "password"}
+                            leftElement={<Icon as={FontAwesome} size={4} ml={3} name="lock" color="black"/>}
                             placeholder="Your Password"
-                            rightElement={<Icon as={FontAwesome} size={3} mr={4} name="eye-slash"
-                                                color="coolGray.800"/>} size={3}/>
+                            rightElement={<Pressable onPress={() => setShow(!show)}>
+                                <Icon as={FontAwesome} size={4} mr={4} name={show ? "eye" : "eye-slash"}
+                                      color="coolGray.800"/>
+                            </Pressable>}
+                            size={3}/>
                     </FormControl>
                     <FormControl>
                         <Input
-                            onChangeText={setConfirmPassword}
-                            type="password"
-                            leftElement={<Icon as={FontAwesome} size={3} ml={3} name="lock" color="black"/>}
-                            placeholder="Confirm Password"
-                            rightElement={<Icon as={FontAwesome} size={3} mr={4} name="eye-slash"
-                                                color="coolGray.800"/>} size={3}/>
+                            onChangeText={value => setConfirmPassword(value)}
+                            type={showConfirm ? "text" : "password"}
+                            leftElement={<Icon as={FontAwesome} size={4} ml={3} name="lock" color="black"/>}
+                            placeholder="Your Password"
+                            rightElement={<Pressable onPress={() => setShowConfirm(!showConfirm)}>
+                                <Icon as={FontAwesome} size={4} mr={4} name={showConfirm ? "eye" : "eye-slash"}
+                                      color="coolGray.800"/>
+                            </Pressable>}
+                            size={3}/>
                     </FormControl>
                     <HStack justifyContent="center">
                         {errors !== "" ? <Text style={styles.error}>{errors}</Text> : null}

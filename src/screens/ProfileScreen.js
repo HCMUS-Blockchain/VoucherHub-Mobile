@@ -20,9 +20,7 @@ const ProfileScreen = () => {
                             <View style={{justifyContent: "center", alignItems: "center"}}>
                                 <Image style={styles.profile}
                                        alt="profile"
-                                       source={{
-                                    uri: "https://scontent.fsgn5-6.fna.fbcdn.net/v/t1.6435-1/125534693_2771674879816874_401904657377394183_n.jpg?stp=dst-jpg_p200x200&_nc_cat=108&ccb=1-7&_nc_sid=7206a8&_nc_ohc=lIsQvvszKJYAX_FPhIV&_nc_ht=scontent.fsgn5-6.fna&oh=00_AfCFboyvu10WMTki5x8rXW25ggawZNtPUZ2RBtcKDQRUCA&oe=639E9766"
-                                }}>
+                                       source={{uri: profile?.avatar}}>
                                 </Image>
                             </View>
                             <View style={{justifyContent: "center", alignItems: "center"}}>
@@ -178,18 +176,17 @@ const styles = StyleSheet.create({
         position: 'absolute',
         width: '100%',
         height: '100%',
-        resizeMode: 'stretch'
+        resizeMode: 'stretch',
     },
     bottomContainer:{
         marginTop: "40%",
         backgroundColor: "#fff",
         borderTopStartRadius: 50,
-
     },
     profile:{
         height: 120,
         width: 120,
-        borderRadius:25,
+        borderRadius:5,
         bottom: "30%",
     }
 })

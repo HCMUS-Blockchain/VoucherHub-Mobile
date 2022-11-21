@@ -1,5 +1,5 @@
 import {Image, ScrollView, View} from "native-base";
-import {StyleSheet} from "react-native";
+import {StyleSheet, TouchableOpacity} from "react-native";
 import Loader from "../components/Loader";
 import {Caption, Text, Title, TouchableRipple} from "react-native-paper";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
@@ -18,14 +18,18 @@ const ProfileScreen = () => {
                     <View style={styles.userInfoSection}>
                         <View style={{flexDirection: 'column'}}>
                             <View style={{justifyContent: "center", alignItems: "center"}}>
-                                <Image style={styles.profile}
-                                       alt="profile"
-                                       source={{uri: profile?.avatar}}>
-                                </Image>
+                                <TouchableOpacity
+                                    style={styles.uploadBtnContainer}>
+                                    {profile.avatar ? <Image
+                                        alt={'Profile Image'}
+                                        source={{uri: profile.avatar}}
+                                        style={{width: '100%', height: '100%'}}
+                                    /> : <Text style={styles.uploadBtn}>Upload Image</Text>}
+                                </TouchableOpacity>
                             </View>
                             <View style={{justifyContent: "center", alignItems: "center"}}>
                                 <Title style={[styles.title, {
-                                    marginTop: -15,
+                                    marginTop: 20,
                                     marginBottom: 5,
                                 }]}>{profile.fullName}</Title>
                             </View>
@@ -179,7 +183,7 @@ const styles = StyleSheet.create({
         resizeMode: 'stretch',
     },
     bottomContainer:{
-        marginTop: "40%",
+        marginTop: "30%",
         backgroundColor: "#fff",
         borderTopStartRadius: 50,
     },
@@ -188,5 +192,19 @@ const styles = StyleSheet.create({
         width: 120,
         borderRadius:5,
         bottom: "30%",
-    }
+    },
+    uploadBtn: {
+        textAlign: 'center', fontSize: 16, opacity: 0.3, fontWeight: 'bold'
+    },
+    uploadBtnContainer: {
+        height: 125,
+        width: 125,
+        borderRadius: 125 / 2,
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderStyle: 'dashed',
+        borderWidth: 1,
+        overflow: 'hidden',
+        marginTop: 20
+    },
 })

@@ -1,22 +1,15 @@
-import {
-  StatusBar,
-  Text,
-  HStack,
-  Box,
-  Image,
-  Header,
-  ZStack,
-  Flex,
-  Button,
-  VStack,
-  Center,
-  Heading,
-  ScrollView,
-} from "native-base";
-import { Ionicons } from "@expo/vector-icons";
+import {Box, Button, Center, Heading, HStack, Image, ScrollView, StatusBar, Text, VStack, ZStack,} from "native-base";
+import {StyleSheet} from "react-native";
+import {Ionicons} from "@expo/vector-icons";
 
 import VoucherDetail from "../components/VoucherDetail";
+import {useState} from "react";
+
 const DetailScreen = () => {
+  const [visible, setVisible] = useState(false);
+  const toggleBottomNavigationView = () => {
+    setVisible(!visible);
+  };
   return (
     <>
       <StatusBar bg="#3700B3" barStyle="light-content" />
@@ -162,13 +155,22 @@ const DetailScreen = () => {
               <Ionicons name="arrow-forward-circle" size={24} color="white" />
             }
             backgroundColor="#BD261C"
+            onPress={toggleBottomNavigationView}
           >
             CHOOSE GAME
           </Button>
+
         </Center>
       </ScrollView>
     </>
   );
 };
 
+const styles = StyleSheet.create({
+  bottomNavigationView: {
+    padding: 20,
+    backgroundColor: '#FFFFFF',
+    paddingTop: 20,
+  },
+});
 export default DetailScreen;

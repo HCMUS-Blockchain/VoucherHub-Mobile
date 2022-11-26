@@ -1,11 +1,11 @@
 import StackNavigator from "./StackNavigator";
 import {useLogin} from "../context/LoginProvider";
-import BottomNav from "./BottomNav";
+import StackSubNavigator from "./StackSubNavigator";
 
 const MainNavigator = () => {
     const {isLogin} = useLogin()
     return (
-        isLogin ? <BottomNav/> : <StackNavigator/>
+        isLogin ? <StackSubNavigator/> : <StackNavigator/>
     )
 
 }

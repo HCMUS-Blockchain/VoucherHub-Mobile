@@ -3,7 +3,6 @@ import Colors from "../constants/colors";
 import {ImageBackground} from "react-native";
 import Buttons from "../components/Buttons";
 const OnLoadingScreen = ({navigation}) => {
-
     return (
         <View style={{flex: 1, backgroundColor: Colors.white}}>
             <StatusBar barStyle="dark-content" backgroundColor="#fff"/>

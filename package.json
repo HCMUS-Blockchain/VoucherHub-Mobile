@@ -21,6 +21,7 @@
     "expo": "^47.0.0",
     "expo-image-picker": "^14.0.1",
     "expo-status-bar": "~1.4.2",
+    "formik": "^2.2.9",
     "install": "^0.13.0",
     "native-base": "3.4.0",
     "npm": "^9.1.1",
@@ -37,7 +38,9 @@
     "react-native-svg": "^13.4.0",
     "react-native-svg-transformer": "^1.0.0",
     "react-native-vector-icons": "^9.2.0",
-    "react-native-web": "~0.18.7"
+    "react-native-web": "~0.18.7",
+    "react-navigation": "^4.4.4",
+    "yup": "^0.32.11"
   },
   "devDependencies": {
     "@babel/core": "^7.19.3"

@@ -9,7 +9,7 @@ export const SignIn = async (email, password) => {
         }
         return signInResponse
     }catch (e){
-        console.log(e)
+        throw e
     }
 }
 export const SignOut = async () => {

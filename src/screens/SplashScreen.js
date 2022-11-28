@@ -1,11 +1,27 @@
 import {Image, View} from "native-base";
 import {StyleSheet} from "react-native";
+import {useLogin} from "../context/LoginProvider";
+import {useEffect} from "react";
 
-const SplashScreen = ({navigation}) =>{
-    setTimeout(()=>{
-        navigation.replace('OnLoadingScreen')
-    },3000)
-    return(
+const SplashScreen = ({navigation}) => {
+    const {isLogin} = useLogin()
+    useEffect(()=> {
+        const timeout = setTimeout(() => {
+            if (navigation) {
+                try {
+                    if (!isLogin) {
+                        navigation.replace('OnLoadingScreen')
+                    }
+                } catch (e) {
+                    console.log(e)
+                }
+            }
+        }, 3000)
+        return () => {
+            clearTimeout(timeout);
+        };
+    },[])
+    return (
         <View style={styles.container}>
             <Image
                 alt="Logo"

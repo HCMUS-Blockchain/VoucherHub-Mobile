@@ -63,6 +63,7 @@ const RegisterScreen = ({navigation}) => {
                 setEmail("");
                 setPassword("");
             }
+            setIsPending(false);
         } catch (e) {
             if (e.response) {
                 if (e.response?.data?.error) {
@@ -71,6 +72,7 @@ const RegisterScreen = ({navigation}) => {
                     setErrors(e.response.data.error);
                 }
             }
+            setIsPending(false);
         }
     }
     return (

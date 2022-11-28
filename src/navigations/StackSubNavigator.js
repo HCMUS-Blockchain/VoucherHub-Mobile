@@ -3,7 +3,7 @@ import DetailScreen from "../screens/DetailScreen";
 import React from "react";
 import {Ionicons} from "@expo/vector-icons";
 import {createNativeStackNavigator} from "@react-navigation/native-stack";
-import OnLoadingScreen from "../screens/OnLoadingScreen";
+import DrStrangeGame from "../games/DrStrangeGame";
 
 const Stack = createNativeStackNavigator();
 const StackSubNavigator = () => {
@@ -25,6 +25,7 @@ const StackSubNavigator = () => {
                     ),
                 }}
             />
+            <Stack.Screen name="DrStrangeGame" component={DrStrangeGame} options={{headerShown: false}}/>
         </Stack.Navigator>
     );
 };

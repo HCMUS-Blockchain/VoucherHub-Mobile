@@ -15,20 +15,14 @@ Q
 ,src/components/HorizontalScrollViewFilter.js,9\0\9079a91f3a9d04844b8c3e2cd38b0940d741bc38
 H
 src/components/Header.js,e\5\e51f5a0439fa2d716c21a933fa2f850a0e5605c8
-G
-src/constants/colors.js,3\b\3ba53a08c932c9e987645c64fdd3e4079a4d1908
 I
 src/screens/HomeScreen.js,9\6\965a9f94a2ab9e71d7d2c86fd505e3cc3ce6ec07
 P
  src/screens/VoucherListScreen.js,4\f\4f429607be4adc25e20a6200e7d89ab7619213b4
-C
-src/utils/helper.js,c\7\c7be17c6e8d5f1bb8a93883f0efa48bf3abfacc9
 M
 src/assets/img/voucher_06.svg,5\e\5e3e21203549f97576b3989d5a6ccafe7b280564
 S
 #src/components/VoucherHomeScreen.js,a\e\ae32238ab58e92d449f91341479ea00c96f22b50
-P
- src/screens/UploadImageScreen.js,f\9\f9aa27d352e78b0d93dc77d60b4f8f9d62a47a3e
 J
 src/screens/LoginScreen.js,c\1\c108fb269ec6e016818efb496b57f39ba492bfbf
 M

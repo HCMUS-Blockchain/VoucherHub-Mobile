@@ -69,6 +69,13 @@ const ProfileScreen = () => {
                         <TouchableRipple onPress={() => {
                         }}>
                             <View style={styles.menuItem}>
+                                <Icon name="ticket-percent-outline" color="#FF6347" size={25}/>
+                                <Text style={styles.menuItemText}>My Vouchers</Text>
+                            </View>
+                        </TouchableRipple>
+                        <TouchableRipple onPress={() => {
+                        }}>
+                            <View style={styles.menuItem}>
                                 <Icon name="heart-outline" color="#FF6347" size={25}/>
                                 <Text style={styles.menuItemText}>Your Favorites</Text>
                             </View>

@@ -186,7 +186,7 @@ const DetailScreen = ({navigation}) => {
                                 navigation.navigate("DrStrangeGame");
                             }}
                             style={styles.panelButton}>
-                            <Text style={styles.panelButtonTitle}>Flappy Bird</Text>
+                            <Text style={styles.panelButtonTitle}>Jump with DrS</Text>
                         </TouchableOpacity>
                     </View>
                 </BottomSheet>

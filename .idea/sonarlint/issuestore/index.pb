@@ -33,8 +33,6 @@ S
 #src/games/DrStrange/utils/random.js,b\f\bf034089cfe24ce692d7c81f825da5aaee67c120
 K
 src/screens/SplashScreen.js,a\b\abd3ba8e78d3b94e190e323e47b222ddca5987eb
-Q
-!src/navigations/StackNavigator.js,9\0\907e3382f679b438bcbbb35366cbfd5be720a811
 N
 src/screens/OnLoadingScreen.js,2\4\2468ca31def50d1fbe921ba6cee0c41795db5fa2
 C
@@ -47,7 +45,13 @@ M
 app.json,6\5\65596286f14dbaba6a5081a2edaae69700cc3c3b
 V
 &src/games/DrStrange/components/Bird.js,3\4\34cc8e9a951f4827689ddee514e90612227d5ba3
-M
-src/components/VoucherItem.js,7\c\7cc7ce7639d1368e50fbfacbf755bab29ceab434
 J
 src/screens/LoginScreen.js,c\1\c108fb269ec6e016818efb496b57f39ba492bfbf
+H
+src/assets/congrats.json,3\0\30153dc883ba8922c55c40976c316c4fe5300c5f
+<
+package.json,7\0\7030d0b2f71b999ff89a343de08c414af32fc93a
+H
+src/components/Loader.js,3\0\302df21011c35053905a3e1aae3479df354d5929
+S
+#src/components/VoucherHomeScreen.js,a\e\ae32238ab58e92d449f91341479ea00c96f22b50

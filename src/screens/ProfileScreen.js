@@ -7,7 +7,7 @@ import {SignOut} from "../api/user";
 import React from "react";
 import {useLogin} from "../context/LoginProvider";
 
-const ProfileScreen = () => {
+const ProfileScreen = ({navigation}) => {
     const {profile,setIsLogin,isPending,setIsPending} = useLogin()
     return (
         <ScrollView style={styles.containerScroll}>
@@ -67,10 +67,12 @@ const ProfileScreen = () => {
 
                     <View style={styles.menuWrapper}>
                         <TouchableRipple onPress={() => {
+                            navigation.navigate('MyVouchers')
                         }}>
                             <View style={styles.menuItem}>
                                 <Icon name="ticket-percent-outline" color="#FF6347" size={25}/>
                                 <Text style={styles.menuItemText}>My Vouchers</Text>
+                                <Image alt="img" source={require("../assets/img/new.png")} style={styles.new}/>
                             </View>
                         </TouchableRipple>
                         <TouchableRipple onPress={() => {
@@ -214,4 +216,11 @@ const styles = StyleSheet.create({
         overflow: 'hidden',
         marginTop: 20
     },
+    new:{
+        height: 30,
+        width: 30,
+        position: 'absolute',
+        right:20,
+        top:12
+    }
 })

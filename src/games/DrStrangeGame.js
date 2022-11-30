@@ -1,6 +1,6 @@
 import {StatusBar} from 'expo-status-bar';
 import React, {useEffect, useState} from 'react';
-import {Dimensions, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {Alert, Dimensions, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {GameEngine} from 'react-native-game-engine';
 import Physics from './physics';
 import ExpoFastImage from "expo-fast-image";
@@ -10,7 +10,6 @@ import {useLogin} from "../context/LoginProvider";
 import clients from "../api/clients";
 import Loader from "../components/Loader";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-
 const {height, width} = Dimensions.get('window');
 
 export default function DrStrangeGame({navigation}) {
@@ -35,7 +34,13 @@ export default function DrStrangeGame({navigation}) {
                     expiredDate: res.data.voucher.expiredDate,
                     discount: res.data.voucher.discount
                 })
+            }else{
+                console.log(res.data.message)
             }
+            setIsLoading(false)
+        }).catch((e) => {
+            console.log(e)
+            Alert.alert('Warning', 'Voucher not available',[{text:'OK'}])
             setIsLoading(false)
         })
     }

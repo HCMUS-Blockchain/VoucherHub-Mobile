@@ -1,17 +1,10 @@
-import {Text, View} from "react-native";
-import {createBottomTabNavigator} from "@react-navigation/bottom-tabs";
-import {Ionicons} from "@expo/vector-icons";
+import { Text, View } from "react-native";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { Ionicons } from "@expo/vector-icons";
 import MainScreen from "../screens/MainScreen";
 import VoucherListScreen from "../screens/VoucherListScreen";
 import ProfileScreen from "../screens/ProfileScreen";
-
-function LocationScreen() {
-  return (
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <Text>Location!</Text>
-    </View>
-  );
-}
+import MapScreen from "../screens/MapScreen";
 
 const Tab = createBottomTabNavigator();
 
@@ -54,7 +47,7 @@ const BottomNavs = () => {
     >
       <Tab.Screen name="Home" component={MainScreen} />
       <Tab.Screen name="Vouchers" component={VoucherListScreen} />
-      <Tab.Screen name="Locations" component={LocationScreen} />
+      <Tab.Screen name="Locations" component={MapScreen} />
       <Tab.Screen name="Profile" component={ProfileScreen} />
     </Tab.Navigator>
   );

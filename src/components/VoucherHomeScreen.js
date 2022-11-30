@@ -1,16 +1,6 @@
-import {
-  Box,
-  Center,
-  Image,
-  Text,
-  ZStack,
-  VStack,
-  HStack,
-  Flex,
-  Pressable,
-} from "native-base";
-import { Ionicons } from "@expo/vector-icons";
-import { useNavigation } from "@react-navigation/native";
+import {Box, Flex, HStack, Image, Pressable, Text, VStack, ZStack,} from "native-base";
+import {Ionicons} from "@expo/vector-icons";
+import {useNavigation} from "@react-navigation/native";
 
 const Voucher = () => {
   const navigation = useNavigation();

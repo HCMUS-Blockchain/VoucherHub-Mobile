@@ -6,10 +6,39 @@ import Physics from './physics';
 import ExpoFastImage from "expo-fast-image";
 import entities from "./DrStrange/entities";
 import Constants from "./DrStrange/utils/constant";
+import {useLogin} from "../context/LoginProvider";
+import clients from "../api/clients";
+import Loader from "../components/Loader";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const {height, width} = Dimensions.get('window');
 
 export default function DrStrangeGame({navigation}) {
+    const {profile} = useLogin()
+    const [isLoading, setIsLoading] = useState(false)
+    const getVoucher = async () => {
+        const token = await AsyncStorage.getItem("token");
+        setIsLoading(true)
+        clients.post('/vouchers/playgame', {
+            gameType: 'drstrange',
+            userId: profile._id,
+            points: currentPoints,
+            campaignId: "6385dcc9e886ad7efffd24ba",
+        }, {
+            headers: {
+                Authorization: `JWT ${token}`,
+            }
+        }).then((res) => {
+            if (res.data.success) {
+                navigation.navigate('ReceiveVoucher', {
+                    code: res.data.voucher.code,
+                    expiredDate: res.data.voucher.expiredDate,
+                    discount: res.data.voucher.discount
+                })
+            }
+            setIsLoading(false)
+        })
+    }
     const [running, setRunning] = useState(false)
     const [gameEngine, setGameEngine] = useState(null)
     const [currentPoints, setCurrentPoints] = useState(0)
@@ -18,6 +47,7 @@ export default function DrStrangeGame({navigation}) {
     }, [])
     return (
         <View style={{flex: 1}}>
+            <Loader loading={isLoading}/>
             <ExpoFastImage style={styles.imageBackground}
                            source={{uri: Constants.BACKGROUND_IMG}}
             />
@@ -45,7 +75,7 @@ export default function DrStrangeGame({navigation}) {
 
             </GameEngine>
 
-            {!running && currentPoints <= 1 ?
+            {!running && currentPoints <= 0 ?
                 <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
                     <TouchableOpacity style={{backgroundColor: 'black', paddingHorizontal: 30, paddingVertical: 10}}
                                       onPress={() => {
@@ -70,12 +100,14 @@ export default function DrStrangeGame({navigation}) {
                     </TouchableOpacity>
 
                 </View> : <Text style={styles.score}>{currentPoints}</Text>}
-            {!running && currentPoints > 1 ?
+            {!running && currentPoints > 0 ?
                 <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-                    <TouchableOpacity style={{
-                        backgroundColor: 'black', paddingHorizontal: 30, paddingVertical: 10,
-                        marginTop: 10
-                    }}>
+                    <TouchableOpacity
+                        onPress={getVoucher}
+                        style={{
+                            backgroundColor: 'black', paddingHorizontal: 30, paddingVertical: 10,
+                            marginBottom: 10
+                        }}>
                         <Text style={{fontWeight: 'bold', color: 'white', fontSize: 30}}>
                             Voucher
                         </Text>

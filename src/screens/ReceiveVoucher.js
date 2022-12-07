@@ -1,7 +1,8 @@
 import {Box, View} from "native-base";
-import {StyleSheet} from "react-native";
+import {StyleSheet, TouchableOpacity} from "react-native";
 import AnimatedLottieView from "lottie-react-native";
 import VoucherDetail from "../components/VoucherDetail";
+import {Touchable} from "react-native-web";
 
 const ReceiveVoucher = (props) => {
     console.log(props)
@@ -18,11 +19,16 @@ const ReceiveVoucher = (props) => {
                         bottom: 250,
                  }}
             >
-                <VoucherDetail
-                    code={props.route.params.code}
-                    expiredDate={props.route.params.expiredDate}
-                    discount={props.route.params.discount}
-                />
+                <TouchableOpacity onPress={() => props.navigation.navigate('BottomNavs',{
+                    screen: 'Profile',
+                })}>
+                    <VoucherDetail
+                        code={props.route.params.code}
+                        expiredDate={props.route.params.expiredDate}
+                        discount={props.route.params.discount}
+                    />
+                </TouchableOpacity>
+
             </Box>
         </View>
     )

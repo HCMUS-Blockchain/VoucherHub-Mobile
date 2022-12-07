@@ -12,12 +12,12 @@ const filterItem = [
   {
     title: "Restaurant",
     iconName: "restaurant",
-    bgColor: "#29D697",
+    bgColor: "#c3e150",
   },
   {
     title: "Car",
     iconName: "car-sport",
-    bgColor: "#46CDFB",
+    bgColor: "#9f67e5",
   },
 ];
 

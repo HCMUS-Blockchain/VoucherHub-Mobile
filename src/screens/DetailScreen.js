@@ -183,6 +183,20 @@ const DetailScreen = ({navigation}) => {
                     <View style={styles.bottomNavigationView}>
                         <TouchableOpacity
                             onPress={() => {
+                                navigation.navigate("QuizGame");
+                            }}
+                            style={styles.panelButton}>
+                            <Text style={styles.panelButtonTitle}>Quiz Game</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity
+                            onPress={() => {
+                                navigation.navigate("Tile2048");
+                            }}
+                            style={styles.panelButton}>
+                            <Text style={styles.panelButtonTitle}>Tile 2048</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity
+                            onPress={() => {
                                 navigation.navigate("DrStrangeGame");
                             }}
                             style={styles.panelButton}>

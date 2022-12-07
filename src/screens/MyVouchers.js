@@ -5,6 +5,8 @@ import {FlatList, Image, SafeAreaView, StyleSheet, Animated} from "react-native"
 import Loader from "../components/Loader";
 import VoucherDetail from "../components/VoucherDetail";
 import {View} from "native-base";
+import getData from "../api/helper";
+import {getAll} from "../api/voucher";
 
 const HEIGHT_IMG = 100;
 const ITEM_PADDING = 10;
@@ -24,11 +26,7 @@ const MyVouchers = () => {
         const token = await AsyncStorage.getItem("token");
         if (token) {
             try {
-                const vouchers = await clients.post("/vouchers/getAll", {}, {
-                    headers: {
-                        Authorization: `JWT ${token}`,
-                    }
-                })
+                const vouchers = await getAll()
                 setLoading(false);
                 return vouchers.data.vouchers
             } catch (e) {

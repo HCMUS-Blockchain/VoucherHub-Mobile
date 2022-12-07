@@ -1,5 +1,5 @@
 import { Box, VStack, Image, Text, HStack } from "native-base";
-const VoucherItem = () => {
+const VoucherItem = (props) => {
   return (
     <Box
       safeArea
@@ -15,15 +15,16 @@ const VoucherItem = () => {
           w="100"
           h="100"
           alignSelf="center"
-          source={require("../assets/img/image87.png")}
+          source={{uri:props.item.image}}
+          resizeMode="contain"
         />
         <VStack w="250" ml="2">
-          <Text>Discount 50%</Text>
+          <Text>Discount {props.item.discount}%</Text>
           <Text fontSize="12" color="gray.400">
-            Reduce $2 for orders value over $50
+            {props.item.description}
           </Text>
           <Text fontSize="12" color="gray.400">
-            Exp date: 23.03.2022
+            {props.item.expiredDate}
           </Text>
         </VStack>
       </HStack>

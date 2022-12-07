@@ -4,11 +4,11 @@ import {Alert, Dimensions, StyleSheet, Text, TouchableOpacity, View} from 'react
 import {GameEngine} from 'react-native-game-engine';
 import Physics from './physics';
 import ExpoFastImage from "expo-fast-image";
-import entities from "./DrStrange/entities";
-import Constants from "./DrStrange/utils/constant";
-import {useLogin} from "../context/LoginProvider";
-import clients from "../api/clients";
-import Loader from "../components/Loader";
+import entities from "./src/entities";
+import Constants from "./src/utils/constant";
+import {useLogin} from "../../context/LoginProvider";
+import clients from "../../api/clients";
+import Loader from "../../components/Loader";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 const {height, width} = Dimensions.get('window');
 

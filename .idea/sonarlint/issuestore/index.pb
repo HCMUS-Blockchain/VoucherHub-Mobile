@@ -7,8 +7,6 @@ I
 src/screens/MainScreen.js,8\d\8db7f36bfc3c0148031cacadd09a92bb110fdb98
 Q
 !src/screens/SuccessLoginScreen.js,8\5\853039e623ca19ebd1b600a82ee52de7ef1564ee
-H
-src/components/Header.js,e\5\e51f5a0439fa2d716c21a933fa2f850a0e5605c8
 I
 src/screens/HomeScreen.js,9\6\965a9f94a2ab9e71d7d2c86fd505e3cc3ce6ec07
 M

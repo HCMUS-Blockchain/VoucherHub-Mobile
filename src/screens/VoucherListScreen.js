@@ -7,6 +7,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import Loader from "../components/Loader";
 import {getAll, searchVoucher} from "../api/voucher";
 import AnimatedLottieView from "lottie-react-native";
+
 const lodash = require('lodash');
 
 const VoucherListScreen = () => {
@@ -27,21 +28,24 @@ const VoucherListScreen = () => {
     const handleSearch = async value => {
         setLoading(true);
         const search = await searchVoucher(value);
-        setData(search.data.vouchers);
-        setLoading(false);
+        if (search.data.success) {
+            setData(search.data.vouchers);
+            setLoading(false);
+        }else{
+            setLoading(false);
+            setData([]);
+        }
+
     }
     const debounceDropDown = useCallback(lodash.debounce((nextValue) => handleSearch(nextValue), 1000), [])
     const getListVoucher = async () => {
         setLoading(true);
-        const token = await AsyncStorage.getItem("token");
-        if (token) {
-            try {
-                const vouchers = await getAll()
-                return vouchers.data.vouchers
-            } catch (e) {
-                setLoading(false);
-                return []
-            }
+        try {
+            const vouchers = await getAll()
+            return vouchers.data.vouchers
+        } catch (e) {
+            setLoading(false);
+            return []
         }
     }
 

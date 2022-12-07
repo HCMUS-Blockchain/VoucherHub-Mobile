@@ -2,13 +2,15 @@ import {Box, Heading, Input, ScrollView, VStack} from "native-base";
 import {Ionicons} from "@expo/vector-icons";
 import HorizontalScrollViewFilter from "../components/HorizontalScrollViewFilter";
 import VoucherItem from "../components/VoucherItem";
-import {useEffect, useState} from "react";
+import {useCallback, useEffect, useState} from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import Loader from "../components/Loader";
-import {getAll} from "../api/voucher";
+import {getAll, searchVoucher} from "../api/voucher";
 import AnimatedLottieView from "lottie-react-native";
+const lodash = require('lodash');
 
 const VoucherListScreen = () => {
+    const [query, setQuery] = useState('');
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(true);
     useEffect(() => {
@@ -17,6 +19,18 @@ const VoucherListScreen = () => {
             setLoading(false);
         })
     }, []);
+    const handleChange = ({nativeEvent}) => {
+        const {text} = nativeEvent;
+        setQuery(text);
+        debounceDropDown(text);
+    }
+    const handleSearch = async value => {
+        setLoading(true);
+        const search = await searchVoucher(value);
+        setData(search.data.vouchers);
+        setLoading(false);
+    }
+    const debounceDropDown = useCallback(lodash.debounce((nextValue) => handleSearch(nextValue), 1000), [])
     const getListVoucher = async () => {
         setLoading(true);
         const token = await AsyncStorage.getItem("token");
@@ -32,17 +46,23 @@ const VoucherListScreen = () => {
     }
 
     return (
-        <Box safeArea>
+        <Box
+            safeArea
+            paddingX="2"
+            paddingY="3"
+        >
             <Loader loading={loading}/>
             <Heading>My Voucher</Heading>
             <VStack w="100%" alignSelf="center" mb="7">
                 <Input
-                    placeholder="Search People & Places"
+                    value={query}
+                    placeholder="Search Places"
                     width="100%"
                     py="2"
                     px="1"
                     fontSize="12"
                     variant="unstyled"
+                    onChange={handleChange}
                     InputLeftElement={
                         <Ionicons name="search-outline" size={24} color="black"/>
                     }

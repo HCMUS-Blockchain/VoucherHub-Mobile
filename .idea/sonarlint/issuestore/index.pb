@@ -30,8 +30,6 @@ H
 :
 
 .gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
-O
-src/components/VoucherDetail.js,9\8\98afd8d0538f3cc7f07bfd6d685fcc8397222eb1
 L
 src/screens/ProfileScreen.js,d\9\d9d45aa71a509d3956fb1a2d0c40a9e08d52a12d
 Q
@@ -40,8 +38,6 @@ P
  src/screens/UploadImageScreen.js,f\9\f9aa27d352e78b0d93dc77d60b4f8f9d62a47a3e
 L
 src/context/LoginProvider.js,0\1\01be20766d00363d8a38f4dac2951f812b431155
-L
-src/navigations/BottomNav.js,b\9\b9a6902cae23b36cd277e47ea4bc61d64a5bba08
 6
 App.js,a\4\a4a49f7b4c549593514920b942b5a787f2773862
 ?

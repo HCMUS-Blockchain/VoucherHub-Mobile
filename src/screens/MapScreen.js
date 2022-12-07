@@ -1,6 +1,9 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import MapView, { Marker } from "react-native-maps";
 import getDirections from "react-native-google-maps-directions";
+import * as Location from "expo-location";
+import { getDistance } from "geolib";
+import { Ionicons } from "@expo/vector-icons";
 
 import {
   StyleSheet,
@@ -10,7 +13,7 @@ import {
   Animated,
   TouchableOpacity,
 } from "react-native";
-const markers = [
+const markersList = [
   {
     latlong: {
       latitude: 10.772727580714891,
@@ -82,12 +85,26 @@ const markers = [
       "https://images.unsplash.com/photo-1472851294608-062f824d29cc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8c3RvcmV8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60",
   },
 ];
-export default function MapScreen() {
-  const handleGetDirections = (latlong) => {
+const initialRegion = {
+  latitude: 0,
+  longitude: 0,
+  latitudeDelta: 0.0922,
+  longitudeDelta: 0.0421,
+};
+
+const MapScreen = () => {
+  const [errorMsg, setErrorMsg] = useState(null);
+  const [initial, setInitial] = useState(initialRegion);
+  const [markers, setMarkers] = useState(markersList);
+  const _map = useRef(null);
+  let mapAnimation = new Animated.Value(0);
+  let mapIndex = 0;
+
+  const handleGetDirections = (latlong, curLat, curLongt) => {
     const data = {
       source: {
-        latitude: 10.767451483196112,
-        longitude: 106.69501404663679,
+        latitude: curLat,
+        longitude: curLongt,
       },
       destination: {
         latitude: latlong.latitude,
@@ -106,8 +123,6 @@ export default function MapScreen() {
     };
     getDirections(data);
   };
-  let mapAnimation = new Animated.Value(0);
-  let mapIndex = 0;
   const interpolations = markers.map((marker, index) => {
     const inputRange = [(index - 1) * 250, index * 250, (index + 1) * 250];
     const outputRange = [1, 1.5, 1];
@@ -120,6 +135,49 @@ export default function MapScreen() {
 
     return { scale };
   });
+
+  useEffect(() => {
+    const getCurrentLocation = async () => {
+      let { status } = await Location.requestForegroundPermissionsAsync();
+      if (status !== "granted") {
+        setErrorMsg("Permission to access location was denied");
+        return;
+      }
+
+      let location = await Location.getCurrentPositionAsync({});
+      const x = {
+        latitudeDelta: 0.0922,
+        longitudeDelta: 0.0421,
+        latitude: location.coords.latitude,
+        longitude: location.coords.longitude,
+      };
+      let newMarkers = markers.map((marker, index) => {
+        const dis = getDistance(
+          { latitude: x.latitude, longitude: x.longitude },
+          marker.latlong
+        );
+        marker.distance = dis;
+      });
+      newMarkers = markers.sort((a, b) => a.distance - b.distance);
+      let yy = markers.map((marker, index) => {
+        let x = marker.distance;
+        if (x < 1000) {
+          marker.distance = " " + x + " meters away";
+        } else {
+          x = (x / 1000).toString().slice(0, 3);
+          marker.distance = " " + x + " kilometers away";
+        }
+      });
+      setMarkers(newMarkers);
+      setInitial(x);
+      return x;
+    };
+
+    getCurrentLocation().then((x) => {
+      _map.current.animateToRegion(x);
+    });
+  }, []);
+
   useEffect(() => {
     mapAnimation.addListener(({ value }) => {
       let index = Math.floor(value / 250 + 0.3);
@@ -146,19 +204,9 @@ export default function MapScreen() {
       }, 10);
     });
   });
-  const _map = useRef(null);
   return (
     <View style={styles.container}>
-      <MapView
-        ref={_map}
-        style={styles.map}
-        initialRegion={{
-          latitude: 10.767451483196112,
-          longitude: 106.69501404663679,
-          latitudeDelta: 0.0922,
-          longitudeDelta: 0.0421,
-        }}
-      >
+      <MapView ref={_map} style={styles.map} initialRegion={initial}>
         {markers.map((marker, index) => {
           const scaleStyle = {
             transform: [{ scale: interpolations[index].scale }],
@@ -218,11 +266,19 @@ export default function MapScreen() {
               <Text numberOfLines={1} style={styles.description}>
                 {marker.description}
               </Text>
+              <Text>
+                <Ionicons name="location" size={18} color="red" />
+                {marker.distance}
+              </Text>
             </View>
             <View style={styles.button}>
               <TouchableOpacity
                 onPress={() => {
-                  handleGetDirections(marker.latlong);
+                  handleGetDirections(
+                    marker.latlong,
+                    initial.latitude,
+                    initial.longitude
+                  );
                 }}
                 style={[
                   styles.signIn,
@@ -242,7 +298,7 @@ export default function MapScreen() {
       </Animated.ScrollView>
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -318,3 +374,5 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
 });
+
+export default MapScreen;

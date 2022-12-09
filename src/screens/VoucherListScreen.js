@@ -3,10 +3,10 @@ import {Ionicons} from "@expo/vector-icons";
 import HorizontalScrollViewFilter from "../components/HorizontalScrollViewFilter";
 import VoucherItem from "../components/VoucherItem";
 import {useCallback, useEffect, useState} from "react";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 import Loader from "../components/Loader";
 import {getAll, searchVoucher} from "../api/voucher";
 import AnimatedLottieView from "lottie-react-native";
+import {RefreshControl} from "react-native";
 
 const lodash = require('lodash');
 
@@ -14,6 +14,15 @@ const VoucherListScreen = () => {
     const [query, setQuery] = useState('');
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [refreshing, setRefreshing] = useState(false);
+
+    const onRefresh = useCallback(() => {
+        setRefreshing(true);
+        getRefresh().then((res) => {
+            setData(res);
+            setRefreshing(false);
+        })
+    }, []);
     useEffect(() => {
         getListVoucher().then((res) => {
             setData(res);
@@ -42,13 +51,30 @@ const VoucherListScreen = () => {
         setLoading(true);
         try {
             const vouchers = await getAll()
-            return vouchers.data.vouchers
+            if (vouchers.data.success) {
+                return vouchers.data.vouchers
+            }
+            else{
+                return []
+            }
         } catch (e) {
             setLoading(false);
             return []
         }
     }
-
+    const getRefresh = async () => {
+        try {
+            const vouchers = await getAll()
+            if (vouchers.data.success) {
+                return vouchers.data.vouchers
+            }
+            else{
+                return []
+            }
+        } catch (e) {
+            return []
+        }
+    }
     return (
         <Box
             safeArea
@@ -70,17 +96,35 @@ const VoucherListScreen = () => {
                     InputLeftElement={
                         <Ionicons name="search-outline" size={24} color="black"/>
                     }
+                    InputRightElement={
+                        <Ionicons name="ios-close-circle"
+                                  style={{display: query ? 'flex' : 'none', marginRight: 10}}
+                                  size={24} color="black" onPress={() =>{
+                            getListVoucher().then((res) => {
+                                setData(res);
+                                setLoading(false);
+                            })
+                            setQuery('')}}/>
+                    }
                 />
             </VStack>
 
             <HorizontalScrollViewFilter
                 setData={setData}
             />
-            <ScrollView showsVerticalScrollIndicator={false}>
+            <ScrollView
+                style={{marginBottom: 120}}
+                refreshControl={
+                    <RefreshControl
+                        refreshing={refreshing}
+                        onRefresh={onRefresh}
+                    />
+                }
+                showsVerticalScrollIndicator={false}>
                 {
                     data && (data.map((item, index) => {
                         return (
-                            <VoucherItem key={index} item={item}/>
+                            <VoucherItem key={item._id} item={item}/>
                         )
                     }))
                 }
@@ -88,7 +132,7 @@ const VoucherListScreen = () => {
             {data && data.length === 0 && <AnimatedLottieView
                 source={require('../../src/assets/nodatafound.json')}
                 autoPlay
-                style={{width: 300, height: 300, alignSelf: 'center', marginTop: 20}}
+                style={{width: 300, height: 300, alignSelf: 'center',marginTop: -30}}
                 loop/>}
         </Box>
     );

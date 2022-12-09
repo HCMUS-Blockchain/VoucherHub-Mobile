@@ -19,10 +19,10 @@ export default function DrStrangeGame({navigation}) {
         const token = await AsyncStorage.getItem("token");
         setIsLoading(true)
         clients.post('/vouchers/playgame', {
-            gameType: 'drstrange',
+            gameType: 'Jump With DrS',
             userId: profile._id,
             points: currentPoints,
-            campaignId: "6385dcc9e886ad7efffd24ba",
+            campaignId: "6392b1093446e7413e28d683",
         }, {
             headers: {
                 Authorization: `JWT ${token}`,

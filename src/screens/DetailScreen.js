@@ -19,15 +19,19 @@ import VoucherDetail from "../components/VoucherDetail";
 import {useState} from "react";
 import Colors from "../constants/colors";
 import {BottomSheet} from "react-native-btr";
+import {getDataOfQuizGame} from "../api/game";
+import Loader from "../components/Loader";
 
 const DetailScreen = ({navigation}) => {
     const [visible, setVisible] = useState(false);
     const toggleBottomNavigationView = () => {
         setVisible(!visible);
     };
+    const [loading, setLoading] = useState(false);
     return (
         <>
             <StatusBar bg="#3700B3" barStyle="light-content"/>
+            <Loader loading={loading}/>
             <Box mb="10">
                 <Image
                     alt="Logo"
@@ -183,20 +187,29 @@ const DetailScreen = ({navigation}) => {
                     <View style={styles.bottomNavigationView}>
                         <TouchableOpacity
                             onPress={() => {
-                                navigation.navigate("QuizGame");
+                                setLoading(true);
+                                getDataOfQuizGame().then(res => {
+                                    setLoading(false);
+                                    setVisible(false)
+                                    navigation.navigate("QuizGame",{
+                                        games:res.data.data
+                                    });
+                                })
                             }}
                             style={styles.panelButton}>
                             <Text style={styles.panelButtonTitle}>Quiz Game</Text>
                         </TouchableOpacity>
                         <TouchableOpacity
                             onPress={() => {
-                                navigation.navigate("Tile2048");
+                                setVisible(false)
+                                navigation.navigate("Tile2048",);
                             }}
                             style={styles.panelButton}>
                             <Text style={styles.panelButtonTitle}>Tile 2048</Text>
                         </TouchableOpacity>
                         <TouchableOpacity
                             onPress={() => {
+                                setVisible(false)
                                 navigation.navigate("DrStrangeGame");
                             }}
                             style={styles.panelButton}>

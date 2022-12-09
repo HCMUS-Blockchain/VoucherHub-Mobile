@@ -3,8 +3,6 @@ I
 src/components/Buttons.js,b\f\bfaf670fa56c6b172febd4a6cc1c30224a94be5c
 9
 	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
-I
-src/screens/MainScreen.js,8\d\8db7f36bfc3c0148031cacadd09a92bb110fdb98
 Q
 !src/screens/SuccessLoginScreen.js,8\5\853039e623ca19ebd1b600a82ee52de7ef1564ee
 I
@@ -106,17 +104,41 @@ n
 >src/games/Tile2048/components/UI-components/Logo.component.jsx,c\0\c02d563e1fd3a4b418caa4c2b3401465b5c9a886
 q
 Asrc/games/Tile2048/components/game-components/Board.component.jsx,b\0\b0022e85dd99ffabc4d71c91b514c92c04418dbb
-L
-src/navigations/BottomNav.js,b\9\b9a6902cae23b36cd277e47ea4bc61d64a5bba08
 <
 package.json,7\0\7030d0b2f71b999ff89a343de08c414af32fc93a
 H
 src/components/Header.js,e\5\e51f5a0439fa2d716c21a933fa2f850a0e5605c8
-N
-src/games/DrStrange/physics.js,9\a\9af99ab676c63aa31a7b110c794c516c80aacb9b
 I
 src/api/pageMyVouchers.js,3\8\38f0112f28fb99abd094c8b6452f78c54e8cdf97
-K
-src/screens/DetailScreen.js,7\d\7dbe35549b6e6986adb1cb4033854205eedc07fb
-K
-src/games/Tile2048/index.js,8\f\8fccbe7199189ce19a395bb22ef40fde5f2e4157
+6
+App.js,a\4\a4a49f7b4c549593514920b942b5a787f2773862
+P
+ src/navigations/MainNavigator.js,b\c\bc5c62d2fc943132e5180fd6ff8f2951aa959132
+A
+src/api/helper.js,1\e\1e8aed89d9dfd7e255972626ec21d83f76afe625
+T
+$src/navigations/StackSubNavigator.js,e\c\ec13ccb3793bb16615a6890a53d348c1d35a76ee
+I
+src/screens/MyVouchers.js,3\5\359ad0806e0a7a3698b642fd27338e1a7bcc4208
+S
+#src/components/VoucherHomeScreen.js,a\e\ae32238ab58e92d449f91341479ea00c96f22b50
+B
+src/api/voucher.js,d\4\d4b71251366fcb2476472ef979ceb3242e4d9b1f
+P
+ src/screens/UploadImageScreen.js,f\9\f9aa27d352e78b0d93dc77d60b4f8f9d62a47a3e
+B
+src/api/clients.js,5\d\5d374217d3be242b204c043e857acd7fe84da91f
+I
+src/screens/MainScreen.js,8\d\8db7f36bfc3c0148031cacadd09a92bb110fdb98
+L
+src/navigations/BottomNav.js,b\9\b9a6902cae23b36cd277e47ea4bc61d64a5bba08
+?
+src/api/game.js,3\3\33366ef6ce140bc59d792ea5d60f03cff1b8efcd
+N
+src/games/DrStrange/physics.js,9\a\9af99ab676c63aa31a7b110c794c516c80aacb9b
+O
+src/components/VoucherDetail.js,9\8\98afd8d0538f3cc7f07bfd6d685fcc8397222eb1
+L
+src/components/FilterItem.js,8\0\8044a05bb87d5817661222d39d22411bfad1f5ef
+\
+,src/components/HorizontalScrollViewFilter.js,9\0\9079a91f3a9d04844b8c3e2cd38b0940d741bc38

@@ -18,9 +18,10 @@ const VoucherItem = (props) => {
           source={{uri:props.item.image}}
           resizeMode="contain"
         />
-        <VStack w="250" ml="2">
+        <VStack w="250" ml="2" paddingRight="2">
           <Text>Discount {props.item.discount}%</Text>
-          <Text fontSize="12" color="gray.400">
+          <Text fontSize="12" color="gray.400"
+          >
             {props.item.description}
           </Text>
           <Text fontSize="12" color="gray.400">

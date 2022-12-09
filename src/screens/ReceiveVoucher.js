@@ -2,10 +2,8 @@ import {Box, View} from "native-base";
 import {StyleSheet, TouchableOpacity} from "react-native";
 import AnimatedLottieView from "lottie-react-native";
 import VoucherDetail from "../components/VoucherDetail";
-import {Touchable} from "react-native-web";
 
 const ReceiveVoucher = (props) => {
-    console.log(props)
     return (
         <View style={styles.container}>
             <AnimatedLottieView

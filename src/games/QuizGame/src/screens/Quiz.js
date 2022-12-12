@@ -106,7 +106,7 @@ const Quiz = (props) => {
         Animated.timing(progress, {
             toValue: currentQuestionIndex + 1,
             duration: 1000,
-            useNativeDriver: false
+            useNativeDriver: true
         }).start();
     }
     const restartQuiz = () => {
@@ -122,7 +122,7 @@ const Quiz = (props) => {
         Animated.timing(progress, {
             toValue: 0,
             duration: 1000,
-            useNativeDriver: false
+            useNativeDriver: true
         }).start();
     }
 

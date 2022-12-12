@@ -1,6 +1,6 @@
-import React from 'react';
-import { Modal, Dimensions, StyleSheet, View } from 'react-native';
-import { useSelector } from 'react-redux';
+import React, {useState} from 'react';
+import {Modal, Dimensions, StyleSheet, View, Animated} from 'react-native';
+import {useSelector} from 'react-redux';
 
 import Logo from './Logo.component';
 import CustomButton from './CustomButton.component';
@@ -10,28 +10,28 @@ import Colors from '../../constants/colors';
 
 const windowWidth = Dimensions.get('window').width;
 
-const GameOverModal = ({ visible, onPressFunction }) => {
-    const score = useSelector((state) => state.game.score);
+const GameOverModal = ({visible, onPressFunction}) => {
+        const score = useSelector((state) => state.game.score);
+        return (
+            <Modal animationType="fade" visible={visible}>
+                <View style={styles.screen}>
+                    <View style={styles.container}>
+                        <Logo containerStyle={styles.logoContainer} textStyle={styles.logoText}/>
 
-    return (
-        <Modal animationType="fade" visible={visible}>
-            <View style={styles.screen}>
-                <View style={styles.container}>
-                    <Logo containerStyle={styles.logoContainer} textStyle={styles.logoText} />
+                        <CustomText style={styles.score}>{`Your score is: ${score}`}</CustomText>
 
-                    <CustomText style={styles.score}>{`Your score is: ${score}`}</CustomText>
-
-                    <CustomButton
-                        title="NEW GAME"
-                        onPressFunction={onPressFunction}
-                        containerStyle={styles.buttonStyle}
-                        textStyle={styles.buttonText}
-                    />
+                        <CustomButton
+                            title="START GAME"
+                            onPressFunction={onPressFunction}
+                            containerStyle={styles.buttonStyle}
+                            textStyle={styles.buttonText}
+                        />
+                    </View>
                 </View>
-            </View>
-        </Modal>
-    );
-};
+            </Modal>
+        );
+    }
+;
 
 const styles = StyleSheet.create({
     screen: {

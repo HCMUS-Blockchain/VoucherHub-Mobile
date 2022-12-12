@@ -101,7 +101,7 @@ const DetailScreen = ({navigation}) => {
                 <Box ml="7">
                     <VoucherDetail/>
                 </Box>
-                <Box p="1">
+                <Box p="1" padding="3">
                     <Heading>Phuc Long discount 65% for Student(U22)</Heading>
                     <Text color="#AC1616">Remain Voucher: 10</Text>
                     <HStack w="100%" alignItem="center">
@@ -169,6 +169,7 @@ const DetailScreen = ({navigation}) => {
                 <Center>
                     <Button
                         w="180"
+                        marginBottom="3"
                         borderRadius="15"
                         rightIcon={
                             <Ionicons name="arrow-forward-circle" size={24} color="white"/>

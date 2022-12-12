@@ -1,58 +1,76 @@
 import React, {useEffect, useState} from 'react'
-import {Animated, Image, Modal, SafeAreaView, StatusBar, Text, TouchableOpacity, View} from 'react-native'
+import {
+    Alert,
+    Animated,
+    BackHandler,
+    Image,
+    Modal,
+    SafeAreaView,
+    StatusBar,
+    Text,
+    TouchableOpacity,
+    View
+} from 'react-native'
 import {COLORS, SIZES} from '../constants';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import clients from "../../../../api/clients";
-import data from "../data/QuizData"
-import {getDataOfQuizGame} from "../../../../api/game";
+import Loader from "../../../../components/Loader";
+import {useLogin} from "../../../../context/LoginProvider";
 
-const Quiz = () => {
-    const games = [{
-        "question": "Trong Java, kết quả sau khi biên dịch mã: float a = 9/0 ?",
-        "options": [
-            "Compilation error",
-            "Runtime Exception",
-            "No Error: Kết quả là NaN"
-        ],
-        "correct_option": "Runtime Exception"
-    },
-        {
-            "question": "Một Jav class không thể được khai báo ở chế độ?",
-            "options": [
-                "Static",
-                "Private",
-                "Default"
-            ],
-            "correct_option": "Private"
-        },
-        {
-            "question": "Primitive datatype được phân bổ dựa trên stack?",
-            "options": [
-                "Đúng",
-                "Sai"
-            ],
-            "correct_option": "Đúng"
-        },
-        {
-            "question": "Có thể so sánh giá trị boolean với integer?",
-            "options": [
-                "Đúng",
-                "Sai"
-            ],
-            "correct_option": "Sai"
-        },
-        {
-            "question": "Phương thức nextLine() thuộc lớp nào?",
-            "options": [
-                "String",
-                "Scanner",
-                "Integer",
-                "System"
-            ],
-            "correct_option": "Scanner"
-        }]
+const Quiz = (props) => {
+    const [loading, setLoading] = useState(false)
+    const {profile} = useLogin()
+    const getVoucher = async () => {
+        const token = await AsyncStorage.getItem("token");
+        setLoading(true)
+        clients.post('/vouchers/playgame', {
+            gameType: 'Quiz Game',
+            userId: profile._id,
+            points: score,
+            campaignId: "6392b1093446e7413e28d683",
+        }, {
+            headers: {
+                Authorization: `JWT ${token}`,
+            }
+        }).then((res) => {
+            if (res.data.success) {
+                props.navigation.navigate('ReceiveVoucher', {
+                    code: res.data.voucher.code,
+                    expiredDate: res.data.voucher.expiredDate,
+                    discount: res.data.voucher.discount
+                })
+            }else{
+                console.log(res.data.message)
+            }
+            setLoading(false)
+        }).catch((e) => {
+            console.log(e)
+            Alert.alert('Warning', 'Voucher not available',[{text:'OK'}])
+            setLoading(false)
+        })
+    }
+    useEffect(() => {
+        const backAction = () => {
+            Alert.alert("Hold on!", "Are you sure you want to go back?", [
+                {
+                    text: "Cancel",
+                    onPress: () => null,
+                    style: "cancel"
+                },
+                { text: "YES", onPress: () => props.navigation.goBack() }
+            ]);
+            return true;
+        };
 
-    const allQuestions = games;
+        const backHandler = BackHandler.addEventListener(
+            "hardwareBackPress",
+            backAction
+        );
+
+        return () => backHandler.remove();
+    }, []);
+    const allQuestions = props.games;
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0)
     const [currentOptionSelected, setCurrentOptionSelected] = useState(null);
     const [correctOption, setCorrectOption] = useState(null);
@@ -88,7 +106,7 @@ const Quiz = () => {
         Animated.timing(progress, {
             toValue: currentQuestionIndex + 1,
             duration: 1000,
-            useNativeDriver: false
+            useNativeDriver: true
         }).start();
     }
     const restartQuiz = () => {
@@ -104,7 +122,7 @@ const Quiz = () => {
         Animated.timing(progress, {
             toValue: 0,
             duration: 1000,
-            useNativeDriver: false
+            useNativeDriver: true
         }).start();
     }
 
@@ -250,6 +268,7 @@ const Quiz = () => {
             flex: 1
         }}>
             <StatusBar barStyle="light-content" backgroundColor={COLORS.primary}/>
+            <Loader loading={loading}/>
             <View style={{
                 flex: 1,
                 paddingVertical: 40,
@@ -310,16 +329,36 @@ const Quiz = () => {
                             </View>
                             {/* Retry Quiz button */}
                             <TouchableOpacity
-                                onPress={restartQuiz}
+                                onPress={getVoucher}
                                 style={{
                                     backgroundColor: COLORS.accent,
                                     padding: 20, width: '100%', borderRadius: 20
                                 }}>
                                 <Text style={{
                                     textAlign: 'center', color: COLORS.white, fontSize: 20
+                                }}>Voucher</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity
+                                onPress={restartQuiz}
+                                style={{
+                                    backgroundColor: COLORS.accent,
+                                    padding: 20, width: '100%', borderRadius: 20, marginTop: 20
+                                }}>
+                                <Text style={{
+                                    textAlign: 'center', color: COLORS.white, fontSize: 20
                                 }}>Retry Quiz</Text>
                             </TouchableOpacity>
-
+                            <TouchableOpacity
+                                onPress={()=> props.navigation.goBack()}
+                                style={{
+                                    backgroundColor: COLORS.accent,
+                                    padding: 20, width: '100%', borderRadius: 20,
+                                    marginTop: 20
+                                }}>
+                                <Text style={{
+                                    textAlign: 'center', color: COLORS.white, fontSize: 20
+                                }}>Return</Text>
+                            </TouchableOpacity>
                         </View>
 
                     </View>

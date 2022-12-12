@@ -1,6 +1,6 @@
 import {StatusBar} from 'expo-status-bar';
 import React, {useEffect, useState} from 'react';
-import {Alert, Dimensions, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {Alert, BackHandler, Dimensions, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {GameEngine} from 'react-native-game-engine';
 import Physics from './physics';
 import ExpoFastImage from "expo-fast-image";
@@ -13,16 +13,19 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 const {height, width} = Dimensions.get('window');
 
 export default function DrStrangeGame({navigation}) {
+    useEffect(() => {
+        navigation.navigate('DetailScreen')
+    }, []);
     const {profile} = useLogin()
     const [isLoading, setIsLoading] = useState(false)
     const getVoucher = async () => {
         const token = await AsyncStorage.getItem("token");
         setIsLoading(true)
         clients.post('/vouchers/playgame', {
-            gameType: 'drstrange',
+            gameType: 'Jump With DrS',
             userId: profile._id,
             points: currentPoints,
-            campaignId: "6385dcc9e886ad7efffd24ba",
+            campaignId: "6392b1093446e7413e28d683",
         }, {
             headers: {
                 Authorization: `JWT ${token}`,
@@ -49,6 +52,22 @@ export default function DrStrangeGame({navigation}) {
     const [currentPoints, setCurrentPoints] = useState(0)
     useEffect(() => {
         setRunning(false)
+        const backAction = () => {
+            Alert.alert("Hold on!", "Are you sure you want to go back?", [
+                {
+                    text: "Cancel",
+                    onPress: () => null,
+                    style: "cancel"
+                },
+                { text: "YES", onPress: () => navigation.goBack() }
+            ]);
+            return true;
+        };
+        const backHandler = BackHandler.addEventListener(
+            "hardwareBackPress",
+            backAction
+        );
+        return () => backHandler.remove();
     }, [])
     return (
         <View style={{flex: 1}}>

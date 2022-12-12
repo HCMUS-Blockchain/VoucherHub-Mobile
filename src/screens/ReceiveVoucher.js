@@ -18,7 +18,7 @@ const ReceiveVoucher = (props) => {
                  }}
             >
                 <TouchableOpacity onPress={() => props.navigation.navigate('BottomNavs',{
-                    screen: 'Profile',
+                    screen: 'Vouchers',
                 })}>
                     <VoucherDetail
                         code={props.route.params.code}

@@ -39,7 +39,7 @@ const VoucherDetail = (props) => {
                     left: 72,
                 }}
             >
-                Code: {props.code}
+                Code: {props.code?props.code:"xxxxxxxxxx"}
             </Text>
             <Text
                 style={{
@@ -50,7 +50,7 @@ const VoucherDetail = (props) => {
                     top: 11,
                 }}
             >
-                Exp: {props.expiredDate}{" "}
+                Exp: {props.expiredDate?props.code:"xxxxxxxxxx"}{" "}
             </Text>
             <Text
                 style={{
@@ -81,7 +81,7 @@ const VoucherDetail = (props) => {
                     fontWeight: "bold",
                 }}
             >
-                CODE: {props.code}
+                CODE: {props.code?props.code:"xxxxxxxxxx"}
             </Text>
         </Box>
     );

@@ -1,4 +1,4 @@
-import {Box, Heading, Input, ScrollView, VStack} from "native-base";
+import {Box, Heading, Input, ScrollView, Text, VStack} from "native-base";
 import {Ionicons} from "@expo/vector-icons";
 import HorizontalScrollViewFilter from "../components/HorizontalScrollViewFilter";
 import VoucherItem from "../components/VoucherItem";
@@ -112,8 +112,16 @@ const VoucherListScreen = () => {
             <HorizontalScrollViewFilter
                 setData={setData}
             />
+            <Text
+                fontSize="sm"
+                fontWeight="bold"
+                mt="2"
+                ml="2"
+            >
+                {data.length} Voucher
+            </Text>
             <ScrollView
-                style={{marginBottom: 120}}
+                style={{marginBottom: 150}}
                 refreshControl={
                     <RefreshControl
                         refreshing={refreshing}

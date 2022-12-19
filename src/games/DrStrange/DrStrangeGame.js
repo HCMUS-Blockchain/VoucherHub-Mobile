@@ -16,14 +16,12 @@ export default function DrStrangeGame({navigation}) {
     useEffect(() => {
         navigation.navigate('DetailScreen')
     }, []);
-    const {profile} = useLogin()
     const [isLoading, setIsLoading] = useState(false)
     const getVoucher = async () => {
         const token = await AsyncStorage.getItem("token");
         setIsLoading(true)
         clients.post('/vouchers/playgame', {
             gameType: 'Jump With DrS',
-            userId: profile._id,
             points: currentPoints,
             campaignId: "6392b1093446e7413e28d683",
         }, {

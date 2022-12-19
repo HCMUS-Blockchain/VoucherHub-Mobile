@@ -20,13 +20,11 @@ import {useLogin} from "../../../../context/LoginProvider";
 
 const Quiz = (props) => {
     const [loading, setLoading] = useState(false)
-    const {profile} = useLogin()
     const getVoucher = async () => {
         const token = await AsyncStorage.getItem("token");
         setLoading(true)
         clients.post('/vouchers/playgame', {
             gameType: 'Quiz Game',
-            userId: profile._id,
             points: score,
             campaignId: "6392b1093446e7413e28d683",
         }, {

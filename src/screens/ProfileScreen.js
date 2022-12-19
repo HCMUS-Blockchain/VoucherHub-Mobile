@@ -76,6 +76,14 @@ const ProfileScreen = ({navigation}) => {
                             </View>
                         </TouchableRipple>
                         <TouchableRipple onPress={() => {
+                            navigation.navigate('PuzzleCollection')
+                        }}>
+                            <View style={styles.menuItem}>
+                                <Icon name="puzzle-outline" color="#FF6347" size={25}/>
+                                <Text style={styles.menuItemText}>Puzzle Collection</Text>
+                            </View>
+                        </TouchableRipple>
+                        <TouchableRipple onPress={() => {
                         }}>
                             <View style={styles.menuItem}>
                                 <Icon name="heart-outline" color="#FF6347" size={25}/>
@@ -85,7 +93,7 @@ const ProfileScreen = ({navigation}) => {
                         <TouchableRipple onPress={() => {
                         }}>
                             <View style={styles.menuItem}>
-                                <Icon name="credit-card" color="#FF6347" size={25}/>
+                                <Icon name="credit-card-outline" color="#FF6347" size={25}/>
                                 <Text style={styles.menuItemText}>Payment</Text>
                             </View>
                         </TouchableRipple>

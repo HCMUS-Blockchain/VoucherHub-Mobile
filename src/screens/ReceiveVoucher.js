@@ -1,32 +1,37 @@
-import {Box, View} from "native-base";
+import {Box, Text, View} from "native-base";
 import {StyleSheet, TouchableOpacity} from "react-native";
 import AnimatedLottieView from "lottie-react-native";
-import VoucherDetail from "../components/VoucherDetail";
+import PuzzleDetail from "../components/PuzzleDetail";
 
 const ReceiveVoucher = (props) => {
     return (
         <View style={styles.container}>
-            <AnimatedLottieView
-                source={require('../assets/congrats.json')}
-                autoPlay
-                style={{width: 300, height: 300,position:'absolute',top:0,left:15,margin:'auto'}}
-                loop />
             <Box ml="7"
                  style={{
                         position: 'absolute',
-                        bottom: 250,
+                        bottom: 240,
                  }}
             >
-                <TouchableOpacity onPress={() => props.navigation.navigate('BottomNavs',{
-                    screen: 'Vouchers',
-                })}>
-                    <VoucherDetail
-                        code={props.route.params.code}
-                        expiredDate={props.route.params.expiredDate}
-                        discount={props.route.params.discount}
+                <TouchableOpacity onPress={() => props?.navigation.navigate('BottomNavs',{screen: 'Profile',})
+                }>
+                    {/*<VoucherDetail*/}
+                    {/*    code={props?.route?.params?.code}*/}
+                    {/*    expiredDate={props?.route?.params?.expiredDate}*/}
+                    {/*    discount={props?.route?.params?.discount}*/}
+                    {/*/>*/}
+                    <PuzzleDetail
+                        img={props?.route?.params?.img}
                     />
+                    <AnimatedLottieView
+                        source={require('../assets/cgra.json')}
+                        autoPlay
+                        loop />
                 </TouchableOpacity>
-
+                <Text
+                    style={styles.text}
+                >
+                    Congratulations! You have received a puzzle game!
+                </Text>
             </Box>
         </View>
     )
@@ -35,6 +40,11 @@ const ReceiveVoucher = (props) => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+    },text: {
+        fontSize:24,
+        textAlign: 'center',
+        color: "#5F6D7A",
+        paddingTop: 20,
     }
 })
 export default ReceiveVoucher

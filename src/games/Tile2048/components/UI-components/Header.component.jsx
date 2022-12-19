@@ -62,15 +62,35 @@ const Header = ({startAnim, navigation}) => {
         setTime(5);
     }
     const [loading, setLoading] = useState(false);
-    const {profile} = useLogin()
     const voucher = async () => {
         const token = await AsyncStorage.getItem("token");
         setLoading(true)
-        clients.post('/vouchers/playgame', {
-            gameType: 'Tile 2048',
-            userId: profile._id,
-            points: gameScore,
-            campaignId: "6392b1093446e7413e28d683",
+        // clients.post('/vouchers/playgame', {
+        //     gameType: 'Tile 2048',
+        //     points: gameScore,
+        //     campaignId: "6392b1093446e7413e28d683",
+        // }, {
+        //     headers: {
+        //         Authorization: `JWT ${token}`,
+        //     }
+        // }).then((res) => {
+        //     if (res.data.success) {
+        //         navigation.navigate('ReceiveVoucher', {
+        //             code: res.data.voucher.code,
+        //             expiredDate: res.data.voucher.expiredDate,
+        //             discount: res.data.voucher.discount
+        //         })
+        //     } else {
+        //         console.log(res.data.message)
+        //     }
+        //     setLoading(false)
+        // }).catch((e) => {
+        //     console.log(e)
+        //     Alert.alert('Warning', 'Voucher not available', [{text: 'OK'}])
+        //     setLoading(false)
+        // })
+        clients.post('/vouchers/puzzle', {
+            name: 'Black Panther'
         }, {
             headers: {
                 Authorization: `JWT ${token}`,
@@ -78,9 +98,7 @@ const Header = ({startAnim, navigation}) => {
         }).then((res) => {
             if (res.data.success) {
                 navigation.navigate('ReceiveVoucher', {
-                    code: res.data.voucher.code,
-                    expiredDate: res.data.voucher.expiredDate,
-                    discount: res.data.voucher.discount
+                    img: res.data.data.img,
                 })
             } else {
                 console.log(res.data.message)
@@ -88,7 +106,6 @@ const Header = ({startAnim, navigation}) => {
             setLoading(false)
         }).catch((e) => {
             console.log(e)
-            Alert.alert('Warning', 'Voucher not available', [{text: 'OK'}])
             setLoading(false)
         })
     }

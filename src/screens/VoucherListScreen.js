@@ -6,11 +6,11 @@ import {useCallback, useEffect, useState} from "react";
 import Loader from "../components/Loader";
 import {getAll, searchVoucher} from "../api/voucher";
 import AnimatedLottieView from "lottie-react-native";
-import {RefreshControl} from "react-native";
+import {RefreshControl, TouchableOpacity} from "react-native";
 
 const lodash = require('lodash');
 
-const VoucherListScreen = () => {
+const VoucherListScreen = ({navigation}) => {
     const [query, setQuery] = useState('');
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -40,7 +40,7 @@ const VoucherListScreen = () => {
         if (search.data.success) {
             setData(search.data.vouchers);
             setLoading(false);
-        }else{
+        } else {
             setLoading(false);
             setData([]);
         }
@@ -53,8 +53,7 @@ const VoucherListScreen = () => {
             const vouchers = await getAll()
             if (vouchers.data.success) {
                 return vouchers.data.vouchers
-            }
-            else{
+            } else {
                 return []
             }
         } catch (e) {
@@ -67,8 +66,7 @@ const VoucherListScreen = () => {
             const vouchers = await getAll()
             if (vouchers.data.success) {
                 return vouchers.data.vouchers
-            }
-            else{
+            } else {
                 return []
             }
         } catch (e) {
@@ -99,12 +97,13 @@ const VoucherListScreen = () => {
                     InputRightElement={
                         <Ionicons name="ios-close-circle"
                                   style={{display: query ? 'flex' : 'none', marginRight: 10}}
-                                  size={24} color="black" onPress={() =>{
+                                  size={24} color="black" onPress={() => {
                             getListVoucher().then((res) => {
                                 setData(res);
                                 setLoading(false);
                             })
-                            setQuery('')}}/>
+                            setQuery('')
+                        }}/>
                     }
                 />
             </VStack>
@@ -132,7 +131,16 @@ const VoucherListScreen = () => {
                 {
                     data && (data.map((item, index) => {
                         return (
-                            <VoucherItem key={item._id} item={item}/>
+                            <TouchableOpacity
+                                key={index}
+                                onPress={() => {
+                                    navigation.navigate('BottomNavs',{
+                                        screen: 'Details'
+                                    })
+                                }}
+                            >
+                                <VoucherItem key={item._id} item={item}/>
+                            </TouchableOpacity>
                         )
                     }))
                 }
@@ -140,7 +148,7 @@ const VoucherListScreen = () => {
             {data && data.length === 0 && <AnimatedLottieView
                 source={require('../../src/assets/nodatafound.json')}
                 autoPlay
-                style={{width: 300, height: 300, alignSelf: 'center',marginTop: -30}}
+                style={{width: 300, height: 300, alignSelf: 'center', marginTop: -30}}
                 loop/>}
         </Box>
     );

@@ -4,6 +4,7 @@ import AnimatedLottieView from "lottie-react-native";
 import PuzzleDetail from "../components/PuzzleDetail";
 
 const ReceiveVoucher = (props) => {
+    console.log(props.route.params)
     return (
         <View style={styles.container}>
             <Box ml="7"

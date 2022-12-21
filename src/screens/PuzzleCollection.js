@@ -6,12 +6,13 @@ import {BottomSheet} from "react-native-btr";
 import {Text} from "native-base";
 import Colors from "../constants/colors";
 import onShare from "../utils/share";
-
+import {APP_WEB_GIFT} from '@env'
 const PuzzleCollection = () => {
     const [img, setImg] = useState()
     const [loading, setLoading] = useState(false)
     const [quantity, setQuantity] = useState(0)
     const [idPuzzle, setIdPuzzle] = useState()
+    const [piece, setPiece] = useState()
     const getListImage = async () => {
         const data = await getAll()
         if (data.data.success) {
@@ -35,7 +36,7 @@ const PuzzleCollection = () => {
     const shareLink = () => {
         let content
         if (idPuzzle) {
-             content = `Congratulation! You have received the puzzle from your friend. You can get it at exp://10.123.1.180:19000/--/path/into/app?id=${idPuzzle}&userId=${img.user}&name=Black Panther`;
+             content = `Congratulation! You have received the puzzle from your friend. You can get it at ${APP_WEB_GIFT}/puzzle?id=${idPuzzle}&&userId=${img.user}&&name=BlackPanther&&piece=${piece}`;
         } else  content = "You don't have any puzzle to share"
         onShare({
             content
@@ -51,6 +52,7 @@ const PuzzleCollection = () => {
                             setVisible(true)
                             setQuantity(img.piece_1.quantity)
                             setIdPuzzle(null)
+                            setPiece("piece_1")
                             if (img.piece_1.id.length > 0) {
                                 for (let i = 0; i < img.piece_1.id.length; i++) {
                                     if (img.piece_1.id[i]) {
@@ -71,6 +73,7 @@ const PuzzleCollection = () => {
                             setVisible(true)
                             setQuantity(img.piece_2.quantity)
                             setIdPuzzle(null)
+                            setPiece("piece_2")
                             if (img.piece_2.id.length > 0) {
                                 for (let i = 0; i < img.piece_2.id.length; i++) {
                                     if (img.piece_2.id[i]) {
@@ -91,6 +94,7 @@ const PuzzleCollection = () => {
                             setVisible(true)
                             setQuantity(img.piece_3.quantity)
                             setIdPuzzle(null)
+                            setPiece("piece_3")
                             if (img.piece_3.id.length > 0) {
                                 for (let i = 0; i < img.piece_3.id.length; i++) {
                                     if (img.piece_3.id[i]) {
@@ -111,6 +115,7 @@ const PuzzleCollection = () => {
                             setVisible(true)
                             setQuantity(img.piece_4.quantity)
                             setIdPuzzle(null)
+                            setPiece("piece_4")
                             if (img.piece_4.id.length > 0) {
                                 for (let i = 0; i < img.piece_4.id.length; i++) {
                                     if (img.piece_4.id[i]) {
@@ -131,6 +136,7 @@ const PuzzleCollection = () => {
                             setVisible(true)
                             setQuantity(img.piece_5.quantity)
                             setIdPuzzle(null)
+                            setPiece("piece_5")
                             if (img.piece_5.id.length > 0) {
                                 for (let i = 0; i < img.piece_5.id.length; i++) {
                                     if (img.piece_5.id[i]) {
@@ -151,6 +157,7 @@ const PuzzleCollection = () => {
                             setVisible(true)
                             setQuantity(img.piece_6.quantity)
                             setIdPuzzle(null)
+                            setPiece("piece_6")
                             if (img.piece_6.id.length > 0) {
                                 for (let i = 0; i < img.piece_6.id.length; i++) {
                                     if (img.piece_6.id[i]) {
@@ -171,6 +178,7 @@ const PuzzleCollection = () => {
                             setVisible(true)
                             setQuantity(img.piece_7.quantity)
                             setIdPuzzle(null)
+                            setPiece("piece_7")
                             if (img.piece_7.id.length > 0) {
                                 for (let i = 0; i < img.piece_7.id.length; i++) {
                                     if (img.piece_7.id[i]) {
@@ -191,6 +199,7 @@ const PuzzleCollection = () => {
                             setVisible(true)
                             setQuantity(img.piece_8.quantity)
                             setIdPuzzle(null)
+                            setPiece("piece_8")
                             if (img.piece_8.id.length > 0) {
                                 for (let i = 0; i < img.piece_8.id.length; i++) {
                                     if (img.piece_8.id[i]) {
@@ -211,6 +220,7 @@ const PuzzleCollection = () => {
                             setVisible(true)
                             setQuantity(img.piece_9.quantity)
                             setIdPuzzle(null)
+                            setPiece("piece_9")
                             if (img.piece_9.id.length > 0) {
                                 for (let i = 0; i < img.piece_9.id.length; i++) {
                                     if (img.piece_9.id[i]) {

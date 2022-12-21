@@ -1,3 +1,3 @@
 import axios from "axios";
-
-export default axios.create({baseURL:'http://10.123.1.180:3000'})
+import {APP_SERVER} from '@env'
+export default axios.create({baseURL:APP_SERVER})

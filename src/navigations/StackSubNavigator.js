@@ -10,27 +10,10 @@ import Tile2048 from "../games/Tile2048";
 import QuizGame from "../games/QuizGame";
 import PuzzleCollection from "../screens/PuzzleCollection";
 import * as Linking from 'expo-linking'
+import {sendPuzzle} from "../api/puzzle";
 
 const Stack = createNativeStackNavigator();
 const StackSubNavigator = () => {
-    const [result, setResult] = useState(null);
-    const url = Linking.useURL()
-    useEffect(() => {
-        console.log(url)
-            if (url) {
-                const { hostname, path, queryParams } = Linking.parse(url);
-                console.log(
-                    `Linked to app with hostname: ${hostname}, path: ${path} and data: ${JSON.stringify(
-                        queryParams
-                    )}`
-                );
-                setResult(queryParams)
-            }
-        },
-        [url])
-    if(result){
-
-    }
     return (
         <Stack.Navigator initialRouteName="BottomNavs">
             <Stack.Screen

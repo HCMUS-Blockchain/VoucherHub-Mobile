@@ -5,8 +5,6 @@ I
 	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
 Q
 !src/screens/SuccessLoginScreen.js,8\5\853039e623ca19ebd1b600a82ee52de7ef1564ee
-M
-src/screens/RegisterScreen.js,4\f\4f73c50267de47a7ecd037da83f386b10a65bd0a
 G
 src/constants/colors.js,3\b\3ba53a08c932c9e987645c64fdd3e4079a4d1908
 K
@@ -69,8 +67,6 @@ W
 'src/games/Tile2048/models/tile.model.js,b\7\b7a5bc18f29bf09158d32c3a1ce5b7e1d33f6ce4
 T
 $src/games/Tile2048/utils/UI.utils.js,6\6\66fdaa41f0de5cebd87c35ee9ed16e89de8a95f0
-H
-src/components/Header.js,e\5\e51f5a0439fa2d716c21a933fa2f850a0e5605c8
 I
 src/api/pageMyVouchers.js,3\8\38f0112f28fb99abd094c8b6452f78c54e8cdf97
 8
@@ -99,10 +95,6 @@ G
 ,src/components/HorizontalScrollViewFilter.js,9\0\9079a91f3a9d04844b8c3e2cd38b0940d741bc38
 w
 Gsrc/games/Tile2048/components/UI-components/GameOverModal.component.jsx,c\f\cf05cb79e49b2622a28c23ed1bf8ebafe43a4e73
-K
-src/screens/DetailScreen.js,7\d\7dbe35549b6e6986adb1cb4033854205eedc07fb
-M
-src/components/VoucherItem.js,7\c\7cc7ce7639d1368e50fbfacbf755bab29ceab434
 ?
 src/api/game.js,3\3\33366ef6ce140bc59d792ea5d60f03cff1b8efcd
 K
@@ -111,8 +103,6 @@ O
 src/components/VoucherDetail.js,9\8\98afd8d0538f3cc7f07bfd6d685fcc8397222eb1
 A
 src/api/helper.js,1\e\1e8aed89d9dfd7e255972626ec21d83f76afe625
-?
-src/api/user.js,8\8\88a1988c7c48bcbda32b3c9e09bdea913a7b6c26
 B
 src/api/voucher.js,d\4\d4b71251366fcb2476472ef979ceb3242e4d9b1f
 I
@@ -129,8 +119,6 @@ T
 $src/games/DrStrange/DrStrangeGame.js,6\8\68a86df01a311b9e42d24803ae877fc885d6e6b3
 p
 @src/games/Tile2048/components/UI-components/Header.component.jsx,1\b\1b062157a2d864b9881518263ac306f22e7417c5
-N
-src/components/PuzzleDetail.js,6\7\673aaf3d1bb9f9096a650a7790457541bf2f5377
 V
 &src/games/QuizGame/src/screens/Quiz.js,5\3\5322cdffa1084ed3702372a38689a00c54e71642
 B
@@ -139,7 +127,28 @@ L
 src/context/LoginProvider.js,0\1\01be20766d00363d8a38f4dac2951f812b431155
 L
 src/components/FilterItem.js,8\0\8044a05bb87d5817661222d39d22411bfad1f5ef
-L
-src/screens/ProfileScreen.js,d\9\d9d45aa71a509d3956fb1a2d0c40a9e08d52a12d
 I
 src/screens/HomeScreen.js,9\6\965a9f94a2ab9e71d7d2c86fd505e3cc3ce6ec07
+C
+src/api/category.js,0\2\0276ccb8f5240ad9b3f730cfd234fb3c02437d95
+:
+
+.gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
+L
+src/navigations/BottomNav.js,b\9\b9a6902cae23b36cd277e47ea4bc61d64a5bba08
+?
+babel.config.js,7\7\775bd43a34022cef87b6af825cbd551f29473f73
+M
+src/screens/ReceiveVoucher.js,b\f\bfd8a77f6b121fca2d2891394590f8fbba05b4a7
+K
+src/screens/DetailScreen.js,7\d\7dbe35549b6e6986adb1cb4033854205eedc07fb
+6
+App.js,a\4\a4a49f7b4c549593514920b942b5a787f2773862
+P
+ src/navigations/MainNavigator.js,b\c\bc5c62d2fc943132e5180fd6ff8f2951aa959132
+M
+src/components/VoucherItem.js,7\c\7cc7ce7639d1368e50fbfacbf755bab29ceab434
+N
+src/components/PuzzleDetail.js,6\7\673aaf3d1bb9f9096a650a7790457541bf2f5377
+H
+src/components/Header.js,e\5\e51f5a0439fa2d716c21a933fa2f850a0e5605c8

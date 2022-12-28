@@ -1,18 +1,27 @@
 import React, {useEffect, useState} from 'react';
 import {Image, StyleSheet, TouchableOpacity, View} from 'react-native';
-import {getAll} from "../api/puzzle";
+import {getAll, sendPuzzle} from "../api/puzzle";
 import Loader from "../components/Loader";
 import {BottomSheet} from "react-native-btr";
-import {Text} from "native-base";
+import {Button, Input, Text, useToast, VStack} from "native-base";
 import Colors from "../constants/colors";
 import onShare from "../utils/share";
 import {APP_WEB_GIFT} from '@env'
+import Modal from "react-native-modal";
+import {Ionicons} from "@expo/vector-icons";
+import {checkUserExist} from "../api/user";
 const PuzzleCollection = () => {
     const [img, setImg] = useState()
     const [loading, setLoading] = useState(false)
     const [quantity, setQuantity] = useState(0)
     const [idPuzzle, setIdPuzzle] = useState()
     const [piece, setPiece] = useState()
+    const [emailFriend, setEmailFriend] = useState("")
+    const [visibleModal, setVisibleModal] = useState(false)
+    const toast = useToast();
+    const toggleModal = () => {
+        setVisibleModal(!visibleModal);
+    };
     const getListImage = async () => {
         const data = await getAll()
         if (data.data.success) {
@@ -42,9 +51,71 @@ const PuzzleCollection = () => {
             content
         })
     }
+
+    const sendPuzzleToFriend = () => {
+        toggleModal()
+        const email={
+            email:emailFriend
+        }
+        checkUserExist(email).then((res) => {
+            const user = res.data.message
+            const userSend = {
+                userId : user._id,
+                id : idPuzzle,
+                name : "BlackPanther",
+                piece
+            }
+            console.log(userSend)
+            setLoading(true)
+            sendPuzzle(userSend).then(r => {
+                setLoading(false)
+                toast.show({
+                    description: "Send successfully",
+                    placement: "top"
+                })
+            })
+            toggleBottomNavigationView()
+        }).catch((e) => {
+            console.log(e)
+            toast.show({
+                description: "Friend is not existed",
+                placement: "top"
+            })
+            toggleBottomNavigationView()
+        })
+    }
     return (
         <View style={styles.container}>
             <Loader loading={loading}/>
+            <Modal isVisible={visibleModal}>
+                <View style={{
+                    backgroundColor:"white",
+                    justifyContent:"center"
+                }}>
+                    <VStack w="100%" alignSelf="center">
+                        <Input
+                            onChangeText={setEmailFriend}
+                            placeholder="Fill by your friend email"
+                            width="100%"
+                            py="2"
+                            px="1"
+                            fontSize="12"
+                            variant="unstyled"
+                            InputLeftElement={
+                                <Ionicons name="search-outline" size={24} color="white" />
+                            }
+                        />
+                        <Button
+                            style={{
+                                borderRadius:0
+                            }}
+                            title="Hide modal"
+                            onPress={sendPuzzleToFriend}>
+                            Send
+                        </Button>
+                    </VStack>
+                </View>
+            </Modal>
             {img &&
                 <View style={styles.box}>
                     <TouchableOpacity
@@ -255,7 +326,16 @@ const PuzzleCollection = () => {
                             onPress={shareLink}
                             style={styles.panelButton}>
                             <Text style={styles.panelButtonTitle}>
-                                Share
+                                Share Everyone
+                            </Text>
+                        </TouchableOpacity>
+                    }
+                    {quantity > 0 &&
+                        <TouchableOpacity
+                            onPress={toggleModal}
+                            style={styles.panelButton}>
+                            <Text style={styles.panelButtonTitle}>
+                                Share With My Friend
                             </Text>
                         </TouchableOpacity>
                     }

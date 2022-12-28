@@ -80,7 +80,7 @@ const VoucherListScreen = ({navigation}) => {
             paddingY="3"
         >
             <Loader loading={loading}/>
-            <Heading>My Voucher</Heading>
+            <Heading>My Vouchers</Heading>
             <VStack w="100%" alignSelf="center" mb="7">
                 <Input
                     value={query}

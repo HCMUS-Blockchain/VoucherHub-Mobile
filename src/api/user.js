@@ -1,5 +1,6 @@
 import clients from "./clients";
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import {postData} from "./helper";
 export const SignIn = async (email, password) => {
     try{
         const signInResponse = await clients.post('/users/signin', {email, password});
@@ -30,4 +31,7 @@ export const SignOut = async () => {
     }catch (e){
         console.log(e)
     }
+}
+exports.checkUserExist = (email) => {
+    return postData('/users/check-user-exist',email)
 }

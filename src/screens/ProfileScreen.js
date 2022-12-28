@@ -84,6 +84,14 @@ const ProfileScreen = ({navigation}) => {
                             </View>
                         </TouchableRipple>
                         <TouchableRipple onPress={() => {
+                            navigation.navigate('HistoryScreen')
+                        }}>
+                            <View style={styles.menuItem}>
+                                <Icon name="history" color="#FF6347" size={25}/>
+                                <Text style={styles.menuItemText}>History</Text>
+                            </View>
+                        </TouchableRipple>
+                        <TouchableRipple onPress={() => {
                         }}>
                             <View style={styles.menuItem}>
                                 <Icon name="heart-outline" color="#FF6347" size={25}/>

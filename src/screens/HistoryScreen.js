@@ -37,7 +37,7 @@ const HistoryScreen = () => {
                 {data.length} Items
             </Text>
             <ScrollView
-                style={{marginBottom: 150}}
+                style={{marginBottom: 50}}
                 /*refreshControl={
                     <RefreshControl
                         refreshing={refreshing}

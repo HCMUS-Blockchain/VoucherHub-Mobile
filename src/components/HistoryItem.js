@@ -1,4 +1,5 @@
 import { Box, VStack, Image, Text, HStack } from "native-base";
+import Moment from 'moment';
 const VoucherItem = (props) => {
   return (
     <Box
@@ -8,6 +9,7 @@ const VoucherItem = (props) => {
       overflow="hidden"
       borderColor="coolGray.200"
       borderWidth="1"
+      backgroundColor="#FBEAEB"
     >
       <HStack alignItems="center">
         <Image
@@ -18,13 +20,19 @@ const VoucherItem = (props) => {
           source={{uri:props.item.image}}
           resizeMode="contain"
         />
-        <VStack w="250" ml="2" paddingRight="2">
+        <VStack w="200" ml="2" paddingRight="2">
+          <Text
+              fontWeight="bold"
+              fontSize="12" color={props.item.message.includes("nhận") ? '#2F3C73' : '#AB729F'}
+          >
+            {props.item.message}
+          </Text>
           <Text fontSize="12" color="gray.400"
           >
-            You just received a {props.item.type} from {props.item.game}
+            {props.item.name}
           </Text>
           <Text fontSize="12" color="gray.400">
-            {props.item.date}
+            {Moment(props.item.date).format('dddd, MMMM Do YYYY, h:mm:ss a')}
           </Text>
         </VStack>
       </HStack>

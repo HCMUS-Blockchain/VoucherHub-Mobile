@@ -100,16 +100,10 @@ I
 .gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
 ?
 babel.config.js,7\7\775bd43a34022cef87b6af825cbd551f29473f73
-M
-src/components/VoucherItem.js,7\c\7cc7ce7639d1368e50fbfacbf755bab29ceab434
 N
 src/components/PuzzleDetail.js,6\7\673aaf3d1bb9f9096a650a7790457541bf2f5377
 H
 src/components/Header.js,e\5\e51f5a0439fa2d716c21a933fa2f850a0e5605c8
-M
-src/components/HistoryItem.js,2\a\2a9328f822ead9a9ea61ff3cba699a5d45261f2b
-L
-src/screens/HistoryScreen.js,a\5\a5007fb60322ef19078bb21e54b3fa7c25683e0f
 M
 src/screens/RegisterScreen.js,4\f\4f73c50267de47a7ecd037da83f386b10a65bd0a
 L

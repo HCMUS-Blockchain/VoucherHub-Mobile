@@ -1,4 +1,4 @@
 const {postData} = require("./helper");
 exports.getAllVouchersVsCategories =() => {
-    return postData('/vouchers/vouchers-category')
+    return postData('/api/vouchers/vouchers-category')
 }

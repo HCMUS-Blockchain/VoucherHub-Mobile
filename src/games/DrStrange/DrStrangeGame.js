@@ -13,22 +13,21 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 const {height, width} = Dimensions.get('window');
 
 export default function DrStrangeGame({navigation}) {
-    useEffect(() => {
-        navigation.navigate('DetailScreen')
-    }, []);
     const [isLoading, setIsLoading] = useState(false)
     const getVoucher = async () => {
         const token = await AsyncStorage.getItem("token");
         setIsLoading(true)
-        clients.post('/vouchers/playgame', {
-            gameType: 'Jump With DrS',
+
+        clients.post('/api/vouchers/playgame', {
+            gameType: 'game1',
             points: currentPoints,
-            campaignId: "6392b1093446e7413e28d683",
+            campaignId: "63a0803af394851a6502d6c6",
         }, {
             headers: {
                 Authorization: `JWT ${token}`,
             }
         }).then((res) => {
+            console.log(res.data)
             if (res.data.success) {
                 navigation.navigate('ReceiveVoucher', {
                     code: res.data.voucher.code,

@@ -188,6 +188,14 @@ const DetailScreen = ({navigation}) => {
                     <View style={styles.bottomNavigationView}>
                         <TouchableOpacity
                             onPress={() => {
+                                setVisible(false)
+                                navigation.navigate("Shake");
+                            }}
+                            style={styles.panelButton}>
+                            <Text style={styles.panelButtonTitle}>Shake</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity
+                            onPress={() => {
                                 setLoading(true);
                                 getDataOfQuizGame().then(res => {
                                     setLoading(false);

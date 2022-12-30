@@ -6,7 +6,7 @@ import {BottomSheet} from "react-native-btr";
 import {Button, Input, Text, useToast, VStack} from "native-base";
 import Colors from "../constants/colors";
 import onShare from "../utils/share";
-import {APP_WEB_GIFT} from '@env'
+const APP_WEB_GIFT = "http://10.123.0.213:3000";
 import Modal from "react-native-modal";
 import {Ionicons} from "@expo/vector-icons";
 import {checkUserExist} from "../api/user";
@@ -68,12 +68,17 @@ const PuzzleCollection = () => {
             console.log(userSend)
             setLoading(true)
             sendPuzzle(userSend).then(r => {
-                setLoading(false)
                 toast.show({
                     description: "Send successfully",
                     placement: "top"
                 })
+                getListImage().then((res) => {
+                    setImg(res)
+                    setLoading(false)
+                })
+                setLoading(false)
             })
+
             toggleBottomNavigationView()
         }).catch((e) => {
             console.log(e)

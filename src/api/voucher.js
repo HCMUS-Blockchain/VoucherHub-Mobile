@@ -1,12 +1,22 @@
 const {postData} = require("./helper");
 exports.getAll = () => {
-    return postData('/vouchers/getAll')
+    return postData('/api/vouchers/getAll')
 }
 
 exports.getAllVouchersByCategoryName = (categoryName) => {
-    return postData('/vouchers/category', {category: categoryName})
+    console.log(categoryName)
+    return postData('/api/vouchers/category', {category: categoryName})
 }
 
 exports.searchVoucher = (keyword) => {
-    return postData('/vouchers/search', {keyword})
+    return postData('/api/vouchers/search', {keyword})
 }
+
+exports.playGame = (data) => {
+    return postData('/api/vouchers/playgame', data)
+}
+
+exports.playPuzzle = (data) => {
+    return postData('/api/vouchers/playpuzzle', data)
+}
+

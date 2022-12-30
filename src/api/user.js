@@ -3,7 +3,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import {postData} from "./helper";
 export const SignIn = async (email, password) => {
     try{
-        const signInResponse = await clients.post('/users/signin', {email, password});
+        const signInResponse = await clients.post('/api/signin', {email, password});
         if (signInResponse.data.success){
             const token = signInResponse.data.token;
             await AsyncStorage.setItem('token', token);
@@ -17,7 +17,7 @@ export const SignOut = async () => {
     try{
         const token = await AsyncStorage.getItem('token')
         if (token !== null){
-            const res = await clients.get('/users/signout',{
+            const res = await clients.get('/api/signout',{
                 headers:{
                     Authorization:`JWT ${token}`
                 }
@@ -33,5 +33,5 @@ export const SignOut = async () => {
     }
 }
 exports.checkUserExist = (email) => {
-    return postData('/users/check-user-exist',email)
+    return postData('/api/check-user-exist',email)
 }

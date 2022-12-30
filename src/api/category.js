@@ -1,4 +1,5 @@
 const {getData} = require('./helper')
 exports.getAll =() => {
-    return getData('/category')
+    return getData('/api/category')
 }
+

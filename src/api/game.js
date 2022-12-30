@@ -1,5 +1,5 @@
 const {getData} = require("./helper");
 
 exports.getDataOfQuizGame = () => {
-    return getData('/game/getDataQuizGame')
+    return getData('/api/game/getDataQuizGame')
 }

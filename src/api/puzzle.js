@@ -1,8 +1,12 @@
 const {postData} = require("./helper");
 exports.getAll = () => {
-    return postData('/puzzle/')
+    return postData('/api/puzzle/')
 }
 
 exports.sendPuzzle = (puzzle) => {
-    return postData('/puzzle/send', puzzle)
+    return postData('/api/puzzle/send-friend', puzzle)
+}
+
+exports.sendPuzzleEveryone = (puzzle) => {
+    return postData('/api/puzzle/send-everyone', puzzle)
 }

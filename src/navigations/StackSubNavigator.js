@@ -12,6 +12,7 @@ import PuzzleCollection from "../screens/PuzzleCollection";
 import * as Linking from 'expo-linking'
 import {sendPuzzle} from "../api/puzzle";
 import HistoryScreen from "../screens/HistoryScreen";
+import Shake from "../games/ShakeIt/Shake";
 
 const Stack = createNativeStackNavigator();
 const StackSubNavigator = () => {
@@ -37,6 +38,7 @@ const StackSubNavigator = () => {
             <Stack.Screen name="ReceiveVoucher" component={ReceiveVoucher} options={{headerShown: false}}/>
             <Stack.Screen name="Tile2048" component={Tile2048} options={{headerShown: false}}/>
             <Stack.Screen name="QuizGame" component={QuizGame} options={{headerShown: false}}/>
+            <Stack.Screen name="Shake" component={Shake} options={{headerShown: false}}/>
             <Stack.Screen name="PuzzleCollection" component={PuzzleCollection} options={{headerShown: false}}/>
             <Stack.Screen name="HistoryScreen" component={HistoryScreen} options={{headerShown: false}}/>
             <Stack.Screen name="MyVouchers" component={MyVouchers} options={{

@@ -13,14 +13,14 @@ const LoginProvider = ({children}) => {
         const token = await AsyncStorage.getItem("token");
         if (token) {
             try{
-                const user = await clients.get("/users/profile", {
+                const user = await clients.get("/api/profile", {
                     headers: {
                         Authorization: `JWT ${token}`,
                     },
                 });
                 if (user.data.success) {
                     setIsLogin(true);
-                    setProfile(user.data.profile)
+                    setProfile(user.data)
                 }else{
                     setIsLogin(false)
                     setProfile({})

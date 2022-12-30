@@ -5,12 +5,13 @@ import HorizontalScrollViewFilter from "../components/HorizontalScrollViewFilter
 import HomeScreen from "./HomeScreen";
 import {useEffect, useState} from "react";
 import * as Linking from "expo-linking";
-import {sendPuzzle} from "../api/puzzle";
+import {sendPuzzle, sendPuzzleEveryone} from "../api/puzzle";
 
 export default function MainScreen({navigation}) {
     const [result, setResult] = useState(null);
+    const [hostname, setHostname] = useState(null);
+    const [path, setPath] = useState(null);
     const url = Linking.useURL()
-    console.log(url)
     useEffect(() => {
             if (url) {
                 const { hostname, path, queryParams } = Linking.parse(url);
@@ -19,13 +20,15 @@ export default function MainScreen({navigation}) {
                         queryParams
                     )}`
                 );
+                setHostname(hostname)
+                setPath(path)
                 setResult(queryParams)
             }
         },
         [url])
 
-    if(result){
-        sendPuzzle(result).then(r => {
+    if(result&&path){
+        sendPuzzleEveryone(result).then(r => {
             const data= r.data.message
             console.log(data)
             if (data.piece.img){

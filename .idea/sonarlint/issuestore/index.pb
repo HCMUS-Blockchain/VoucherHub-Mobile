@@ -85,8 +85,6 @@ p
 @src/games/Tile2048/components/game-components/Tile.component.jsx,5\5\554c7f61a5e125f13feee0fcb291b5032e7db665
 G
 src/constants/filter.js,d\4\d4066ff7214d8f8e7d8246a9a6e076f0cc821a17
-O
-src/components/VoucherDetail.js,9\8\98afd8d0538f3cc7f07bfd6d685fcc8397222eb1
 P
  src/screens/UploadImageScreen.js,f\9\f9aa27d352e78b0d93dc77d60b4f8f9d62a47a3e
 D
@@ -138,3 +136,35 @@ K
 src/games/QuizGame/index.js,b\6\b6972fb6d0ba97d61a1103e169cba1d6e18f30b1
 K
 src/games/Tile2048/index.js,8\f\8fccbe7199189ce19a395bb22ef40fde5f2e4157
+w
+Gsrc/games/Tile2048/components/UI-components/GameOverModal.component.jsx,c\f\cf05cb79e49b2622a28c23ed1bf8ebafe43a4e73
+4
+.env,3\c\3c84dcdc6bbe3d7817c49dcdc327b926fea1808a
+C
+src/api/category.js,0\2\0276ccb8f5240ad9b3f730cfd234fb3c02437d95
+K
+src/screens/DetailScreen.js,7\d\7dbe35549b6e6986adb1cb4033854205eedc07fb
+T
+$src/games/DrStrange/DrStrangeGame.js,6\8\68a86df01a311b9e42d24803ae877fc885d6e6b3
+?
+src/api/game.js,3\3\33366ef6ce140bc59d792ea5d60f03cff1b8efcd
+N
+src/games/ShakeIt/Gift/Gift.js,6\5\65d2bfd2e04789c936b3b7dd478d6a35df95ba70
+L
+src/context/LoginProvider.js,0\1\01be20766d00363d8a38f4dac2951f812b431155
+I
+src/api/pageMyVouchers.js,3\8\38f0112f28fb99abd094c8b6452f78c54e8cdf97
+O
+src/screens/PuzzleCollection.js,e\5\e5271b46e5838a1497db0ff616357b496ae26561
+J
+src/games/ShakeIt/Shake.js,f\4\f4756a242cab026c3df874f353cfd50be0672b9c
+S
+#src/games/ShakeIt/ShakeEventExpo.js,5\2\52470a066d5a0a22b74f5fbf344fa210de5b8f6d
+?
+src/api/user.js,8\8\88a1988c7c48bcbda32b3c9e09bdea913a7b6c26
+B
+src/api/voucher.js,d\4\d4b71251366fcb2476472ef979ceb3242e4d9b1f
+B
+src/api/history.js,5\3\53b699531da84081d92473ddb90b3221940b8e7a
+<
+package.json,7\0\7030d0b2f71b999ff89a343de08c414af32fc93a

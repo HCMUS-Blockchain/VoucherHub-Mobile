@@ -2,6 +2,7 @@ import {Box, Text, View} from "native-base";
 import {StyleSheet, TouchableOpacity} from "react-native";
 import AnimatedLottieView from "lottie-react-native";
 import PuzzleDetail from "../components/PuzzleDetail";
+import VoucherDetail from "../components/VoucherDetail";
 
 const ReceiveVoucher = (props) => {
     console.log(props.route.params)
@@ -20,9 +21,11 @@ const ReceiveVoucher = (props) => {
                     {/*    expiredDate={props?.route?.params?.expiredDate}*/}
                     {/*    discount={props?.route?.params?.discount}*/}
                     {/*/>*/}
+
                     <PuzzleDetail
                         img={props?.route?.params?.img}
                     />
+
                     <AnimatedLottieView
                         source={require('../assets/cgra.json')}
                         autoPlay

@@ -30,7 +30,6 @@ export default function MainScreen({navigation}) {
     if(result&&path){
         sendPuzzleEveryone(result).then(r => {
             const data= r.data.message
-            console.log(data)
             if (data.piece.img){
                 navigation.navigate("ReceiveVoucher", {img:data?.piece?.img})
             }

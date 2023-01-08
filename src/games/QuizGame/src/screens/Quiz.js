@@ -12,12 +12,80 @@ import {
     View
 } from 'react-native'
 import {COLORS, SIZES} from '../constants';
+import * as Progress from 'react-native-progress';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import clients from "../../../../api/clients";
 import Loader from "../../../../components/Loader";
-import {useLogin} from "../../../../context/LoginProvider";
+import quizData from "../data/QuizData";
 
+const form = [{
+    "answer": "C",
+    "optionA": "bakery",
+    "optionB": "fishmonger's",
+    "optionC": "green",
+    "optionD": "jewellery shop",
+    "question": "You can buy fish at the...",
+},
+    {
+        "answer": "C",
+        "optionA": "dairy corner",
+        "optionB": "grocer's",
+        "optionC": "butcher's",
+        "optionD": "green grocer's",
+        "question": "You can buy milk at the ...",
+    },
+    {
+        "answer": "C",
+        "optionA": "bakery",
+        "optionB": "fishmonger's",
+        "optionC": "green",
+        "optionD": "jewellery shop",
+        "question": "You can buy a pencil and a notebook at the ...",
+    },
+    {
+        "answer": "C",
+        "optionA": "bakery",
+        "optionB": "fishmonger's",
+        "optionC": "green",
+        "optionD": "jewellery shop",
+        "question": "You can buy meat at the...",
+    },
+    {
+        "answer": "C",
+        "optionA": "bakery",
+        "optionB": "fishmonger's",
+        "optionC": "green",
+        "optionD": "jewellery shop",
+        "question": "You can buy elephant at the...",
+    }
+]
+
+const mapAnswer = (answer) => {
+switch (answer) {
+        case 'A':
+            return "optionA"
+        case 'B':
+            return "optionB"
+        case 'C':
+            return "optionC"
+        case 'D':
+            return "optionD"
+    }
+}
+const handleForm = (form) => {
+    const newArray = []
+    const arrForm = form.questions
+    for (let i = 0; i < arrForm.length; i++) {
+        const object = {
+            options : [arrForm[i].optionA, arrForm[i].optionB, arrForm[i].optionC, arrForm[i].optionD],
+            correct_option : arrForm[i][mapAnswer(arrForm[i].answer)],
+            question : arrForm[i].question
+        }
+        newArray.push(object)
+    }
+    return newArray
+}
 const Quiz = (props) => {
     const [loading, setLoading] = useState(false)
     const getVoucher = async () => {
@@ -38,13 +106,13 @@ const Quiz = (props) => {
                     expiredDate: res.data.voucher.expiredDate,
                     discount: res.data.voucher.discount
                 })
-            }else{
+            } else {
                 console.log(res.data.message)
             }
             setLoading(false)
         }).catch((e) => {
             console.log(e)
-            Alert.alert('Warning', 'Voucher not available',[{text:'OK'}])
+            Alert.alert('Warning', 'Voucher not available', [{text: 'OK'}])
             setLoading(false)
         })
     }
@@ -56,7 +124,7 @@ const Quiz = (props) => {
                     onPress: () => null,
                     style: "cancel"
                 },
-                { text: "YES", onPress: () => props.navigation.goBack() }
+                {text: "YES", onPress: () => props.navigation.goBack()}
             ]);
             return true;
         };
@@ -68,7 +136,7 @@ const Quiz = (props) => {
 
         return () => backHandler.remove();
     }, []);
-    const allQuestions = props.games;
+    const allQuestions = handleForm(props.games)
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0)
     const [currentOptionSelected, setCurrentOptionSelected] = useState(null);
     const [correctOption, setCorrectOption] = useState(null);
@@ -87,7 +155,8 @@ const Quiz = (props) => {
             setScore(score + 1)
         }
         // Show Next Button
-        setShowNextButton(true)
+        setShowNextButton(true)// Set progress bar
+        setProgressWidth((currentQuestionIndex+1)/allQuestions.length )
     }
     const handleNext = () => {
         if (currentQuestionIndex == allQuestions.length - 1) {
@@ -100,6 +169,7 @@ const Quiz = (props) => {
             setCorrectOption(null);
             setIsOptionsDisabled(false);
             setShowNextButton(false);
+
         }
         Animated.timing(progress, {
             toValue: currentQuestionIndex + 1,
@@ -117,6 +187,7 @@ const Quiz = (props) => {
         setCorrectOption(null);
         setIsOptionsDisabled(false);
         setShowNextButton(false);
+        setProgressWidth(0)
         Animated.timing(progress, {
             toValue: 0,
             duration: 1000,
@@ -126,6 +197,7 @@ const Quiz = (props) => {
 
 
     const renderQuestion = () => {
+
         return (
             <View style={{
                 marginVertical: 40
@@ -237,25 +309,18 @@ const Quiz = (props) => {
         inputRange: [0, allQuestions.length],
         outputRange: ['0%', '100%']
     })
+    const [progressWidth, setProgressWidth] = useState(0);
     const renderProgressBar = () => {
         return (
             <View style={{
                 width: '100%',
                 height: 20,
                 borderRadius: 20,
-                backgroundColor: '#00000020',
-
+                alignItems: 'center',
+                justifyContent: 'center',
+                display: 'flex',
             }}>
-                <Animated.View style={[{
-                    height: 20,
-                    borderRadius: 20,
-                    backgroundColor: COLORS.accent
-                }, {
-                    width: progressAnim
-                }]}>
-
-                </Animated.View>
-
+                <Progress.Bar progress={progressWidth} width={280} />
             </View>
         )
     }

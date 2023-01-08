@@ -201,7 +201,7 @@ const DetailScreen = ({navigation}) => {
                                     setLoading(false);
                                     setVisible(false)
                                     navigation.navigate("QuizGame",{
-                                        games:res.data.data
+                                        games:res.data.quiz
                                     });
                                 })
                             }}

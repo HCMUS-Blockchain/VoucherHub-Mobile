@@ -2,7 +2,7 @@ import {Box, Flex, HStack, Image, Pressable, Text, VStack, ZStack,} from "native
 import {Ionicons} from "@expo/vector-icons";
 import {useNavigation} from "@react-navigation/native";
 
-const Voucher = () => {
+const Voucher = (props) => {
   const navigation = useNavigation();
   return (
     <Pressable
@@ -25,7 +25,7 @@ const Voucher = () => {
             alt="Logo"
             borderRadius="20"
             mt="1"
-            source={require("../assets/img/image80.png")}
+            source={{uri: props.image}}
             position="relative"
           />
           <VStack

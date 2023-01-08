@@ -1,6 +1,6 @@
 import BottomNavs from "./BottomNav";
 import DetailScreen from "../screens/DetailScreen";
-import React, {useEffect, useState} from "react";
+import React from "react";
 import {Ionicons} from "@expo/vector-icons";
 import {createNativeStackNavigator} from "@react-navigation/native-stack";
 import DrStrangeGame from "../games/DrStrange/DrStrangeGame";
@@ -9,8 +9,6 @@ import MyVouchers from "../screens/MyVouchers";
 import Tile2048 from "../games/Tile2048";
 import QuizGame from "../games/QuizGame";
 import PuzzleCollection from "../screens/PuzzleCollection";
-import * as Linking from 'expo-linking'
-import {sendPuzzle} from "../api/puzzle";
 import HistoryScreen from "../screens/HistoryScreen";
 import Shake from "../games/ShakeIt/Shake";
 

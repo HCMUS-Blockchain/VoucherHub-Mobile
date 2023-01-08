@@ -19,8 +19,6 @@ J
 src/screens/LoginScreen.js,c\1\c108fb269ec6e016818efb496b57f39ba492bfbf
 H
 src/assets/congrats.json,3\0\30153dc883ba8922c55c40976c316c4fe5300c5f
-Q
-!src/navigations/StackNavigator.js,9\0\907e3382f679b438bcbbb35366cbfd5be720a811
 H
 src/components/Loader.js,3\0\302df21011c35053905a3e1aae3479df354d5929
 K
@@ -43,14 +41,10 @@ Y
 )src/games/DrStrange/src/entities/index.js,f\9\f986acc8b1526dde7b66b35c6ca7d0e427908eb4
 Y
 )src/games/QuizGame/src/constants/index.js,b\f\bf6cf44bac0656eefc9c6f044631a7a0184b2c5f
-W
-'src/games/QuizGame/src/screens/index.js,b\9\b9920b11d4b99f29c949fcce77611249089fb2ad
 8
 index.js,a\7\a77b15c0d64cf6111e025645e562faf8ccabb9d7
 ^
 .src/games/DrStrange/src/components/Obstacle.js,4\6\4693e1a409d342dac7ca57c555180b3bbcc098ea
-W
-'src/games/QuizGame/src/data/QuizData.js,4\0\40e331314efbbdf71ec23c910b4ad20a096611e1
 W
 'src/games/DrStrange/src/utils/random.js,a\5\a5e257b2e37a3b9381b7416de92f0349ba8a3d5e
 X
@@ -59,8 +53,6 @@ v
 Fsrc/games/Tile2048/components/game-components/ScoreBoard.component.jsx,2\6\26d45bf7004886177d29eaca428fbaeea0e9661f
 Y
 )src/games/Tile2048/utils/storage.utils.js,0\7\07a2c1b2681964ae139da823303fc937db47c464
-Y
-)src/games/QuizGame/src/constants/theme.js,0\8\087a7b72b93cfd1403f1e273b0372ecd6cf5625d
 T
 $src/games/Tile2048/utils/UI.utils.js,6\6\66fdaa41f0de5cebd87c35ee9ed16e89de8a95f0
 8
@@ -69,8 +61,6 @@ d
 4src/games/Tile2048/redux/StoreProvider.component.jsx,c\5\c5c68d50eea88faa57b48d33d8f7d09977a6557f
 n
 >src/games/Tile2048/components/UI-components/Logo.component.jsx,c\0\c02d563e1fd3a4b418caa4c2b3401465b5c9a886
-S
-#src/components/VoucherHomeScreen.js,a\e\ae32238ab58e92d449f91341479ea00c96f22b50
 N
 src/games/DrStrange/physics.js,9\a\9af99ab676c63aa31a7b110c794c516c80aacb9b
 V
@@ -91,8 +81,6 @@ D
 src/assets/cgra.json,b\0\b0e4a0fe2f3e26ea52f4ad49f2d0d228f22ce0d9
 B
 src/utils/share.js,a\7\a70809f363c943d9eeb1da0fe798b0d94627a361
-I
-src/screens/HomeScreen.js,9\6\965a9f94a2ab9e71d7d2c86fd505e3cc3ce6ec07
 :
 
 .gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
@@ -100,54 +88,32 @@ I
 babel.config.js,7\7\775bd43a34022cef87b6af825cbd551f29473f73
 N
 src/components/PuzzleDetail.js,6\7\673aaf3d1bb9f9096a650a7790457541bf2f5377
-H
-src/components/Header.js,e\5\e51f5a0439fa2d716c21a933fa2f850a0e5605c8
 M
 src/screens/RegisterScreen.js,4\f\4f73c50267de47a7ecd037da83f386b10a65bd0a
-L
-src/navigations/BottomNav.js,b\9\b9a6902cae23b36cd277e47ea4bc61d64a5bba08
 A
 src/api/helper.js,1\e\1e8aed89d9dfd7e255972626ec21d83f76afe625
 L
 src/screens/ProfileScreen.js,d\9\d9d45aa71a509d3956fb1a2d0c40a9e08d52a12d
-I
-src/screens/MyVouchers.js,3\5\359ad0806e0a7a3698b642fd27338e1a7bcc4208
 6
 App.js,a\4\a4a49f7b4c549593514920b942b5a787f2773862
-P
- src/navigations/MainNavigator.js,b\c\bc5c62d2fc943132e5180fd6ff8f2951aa959132
 W
 'src/games/Tile2048/models/tile.model.js,b\7\b7a5bc18f29bf09158d32c3a1ce5b7e1d33f6ce4
-V
-&src/games/QuizGame/src/screens/Quiz.js,5\3\5322cdffa1084ed3702372a38689a00c54e71642
 p
 @src/games/Tile2048/components/UI-components/Header.component.jsx,1\b\1b062157a2d864b9881518263ac306f22e7417c5
 v
 Fsrc/games/Tile2048/components/UI-components/CustomButton.component.jsx,b\0\b0ad9a5045edd87fe2b955baa63ce16beee42e0b
 c
 3src/games/Tile2048/screens/GameScreen.component.jsx,7\2\72754cb3f168d8ff66a55d0da31689f832228912
-P
- src/screens/VoucherListScreen.js,4\f\4f429607be4adc25e20a6200e7d89ab7619213b4
 \
 ,src/components/HorizontalScrollViewFilter.js,9\0\9079a91f3a9d04844b8c3e2cd38b0940d741bc38
-L
-src/components/FilterItem.js,8\0\8044a05bb87d5817661222d39d22411bfad1f5ef
-K
-src/games/QuizGame/index.js,b\6\b6972fb6d0ba97d61a1103e169cba1d6e18f30b1
 K
 src/games/Tile2048/index.js,8\f\8fccbe7199189ce19a395bb22ef40fde5f2e4157
 w
 Gsrc/games/Tile2048/components/UI-components/GameOverModal.component.jsx,c\f\cf05cb79e49b2622a28c23ed1bf8ebafe43a4e73
 4
 .env,3\c\3c84dcdc6bbe3d7817c49dcdc327b926fea1808a
-C
-src/api/category.js,0\2\0276ccb8f5240ad9b3f730cfd234fb3c02437d95
-K
-src/screens/DetailScreen.js,7\d\7dbe35549b6e6986adb1cb4033854205eedc07fb
 T
 $src/games/DrStrange/DrStrangeGame.js,6\8\68a86df01a311b9e42d24803ae877fc885d6e6b3
-?
-src/api/game.js,3\3\33366ef6ce140bc59d792ea5d60f03cff1b8efcd
 N
 src/games/ShakeIt/Gift/Gift.js,6\5\65d2bfd2e04789c936b3b7dd478d6a35df95ba70
 L
@@ -164,7 +130,33 @@ S
 src/api/user.js,8\8\88a1988c7c48bcbda32b3c9e09bdea913a7b6c26
 B
 src/api/voucher.js,d\4\d4b71251366fcb2476472ef979ceb3242e4d9b1f
+M
+src/components/HistoryItem.js,2\a\2a9328f822ead9a9ea61ff3cba699a5d45261f2b
+O
+src/components/VoucherDetail.js,9\8\98afd8d0538f3cc7f07bfd6d685fcc8397222eb1
+M
+src/components/VoucherItem.js,7\c\7cc7ce7639d1368e50fbfacbf755bab29ceab434
+M
+src/screens/ReceiveVoucher.js,b\f\bfd8a77f6b121fca2d2891394590f8fbba05b4a7
+P
+ src/navigations/MainNavigator.js,b\c\bc5c62d2fc943132e5180fd6ff8f2951aa959132
+Q
+!src/navigations/StackNavigator.js,9\0\907e3382f679b438bcbbb35366cbfd5be720a811
+A
+src/api/puzzle.js,0\d\0ddaa14451292aa9b724541fe23b8a9985381634
+L
+src/components/FilterItem.js,8\0\8044a05bb87d5817661222d39d22411bfad1f5ef
+L
+src/screens/HistoryScreen.js,a\5\a5007fb60322ef19078bb21e54b3fa7c25683e0f
+I
+src/screens/MyVouchers.js,3\5\359ad0806e0a7a3698b642fd27338e1a7bcc4208
+P
+ src/screens/VoucherListScreen.js,4\f\4f429607be4adc25e20a6200e7d89ab7619213b4
+C
+src/api/category.js,0\2\0276ccb8f5240ad9b3f730cfd234fb3c02437d95
 B
 src/api/history.js,5\3\53b699531da84081d92473ddb90b3221940b8e7a
-<
-package.json,7\0\7030d0b2f71b999ff89a343de08c414af32fc93a
+W
+'src/games/QuizGame/src/screens/index.js,b\9\b9920b11d4b99f29c949fcce77611249089fb2ad
+H
+src/components/Header.js,e\5\e51f5a0439fa2d716c21a933fa2f850a0e5605c8

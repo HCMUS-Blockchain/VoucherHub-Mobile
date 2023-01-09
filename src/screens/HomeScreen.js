@@ -3,18 +3,23 @@ import {Ionicons} from "@expo/vector-icons";
 import Voucher from "../components/VoucherHomeScreen";
 import {useEffect, useState} from "react";
 import {getNewestCampaign} from "../api/campaign";
+import Loader from "../components/Loader";
 
 
 const HomeScreen = () => {
+    const [isLoading, setLoading] = useState(false);
     const [newestCampaigns, setNewestCampaign] = useState([]);
     useEffect(() => {
+        setLoading(true);
         getNewestCampaign().then((res) => {
             setNewestCampaign(res.data.campaigns);
         })
+        setLoading(false);
     }, []);
     return (
         <ScrollView showsVerticalScrollIndicator={false}>
             <Box px="5" bgColor="white">
+                <Loader loading={isLoading}/>
                 <Flex justify="space-between" align="center" direction="row" w="100%">
                     <Heading size="sm">Newest Campaigns</Heading>
                     <Flex direction="row">
@@ -29,13 +34,15 @@ const HomeScreen = () => {
                 >
                     {
                         newestCampaigns && newestCampaigns.map((item, index) => {
-                            console.log("item", item.image);
                             return (
                                 <Voucher key={index}
+                                         campaignID={item._id}
                                          image={item.image}
                                          title={item.name}
                                          date={item.createdAt}
                                          address={item.address}
+                                         checkFavorite={item.checkFavorite}
+                                         setNewestCampaign={setNewestCampaign}
                                 />
                             )
                         })

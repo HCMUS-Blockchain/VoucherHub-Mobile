@@ -1,8 +1,10 @@
-import {Box, Flex, HStack, Image, Pressable, Text, VStack, ZStack,} from "native-base";
+import {Box, Flex, HStack, Image, Pressable, Text, View, VStack, ZStack,} from "native-base";
 import {Ionicons} from "@expo/vector-icons";
 import {useNavigation} from "@react-navigation/native";
+import Moment from "moment/moment";
 
 const Voucher = (props) => {
+  console.log("props", props);
   const navigation = useNavigation();
   return (
     <Pressable
@@ -25,6 +27,9 @@ const Voucher = (props) => {
             alt="Logo"
             borderRadius="20"
             mt="1"
+            w="100%"
+            h="65%"
+            resizeMode="contain"
             source={{uri: props.image}}
             position="relative"
           />
@@ -37,10 +42,10 @@ const Voucher = (props) => {
             left="2"
           >
             <Text alignSelf="center" color="#F0635A">
-              20
+              {Moment(props.date).format("DD")}
             </Text>
-            <Text alignSelf="center" isTruncated w="99%" color="#F0635A">
-              June
+            <Text alignSelf="center" color="#F0635A">
+              {Moment(props.date).format("MMM")}
             </Text>
           </VStack>
           <Box
@@ -59,59 +64,64 @@ const Voucher = (props) => {
             <Ionicons name="bookmark" size={24} color="#EB5757" />
           </Box>
         </Flex>
-
-        <Text isTruncated w="210">
-          Phuc Long Off 65% for Student asasaas
-        </Text>
-        <Flex w="100%" h="7" direction="row" mt="2">
-          <ZStack>
-            <Image
-              alignContent="center"
-              alt="Logo"
-              borderRadius="90"
-              w="7"
-              h="7"
-              source={{
-                uri: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8cHJvZmlsZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60",
-              }}
-            />
-            <Image
-              alignContent="center"
-              alt="Logo"
-              borderRadius="90"
-              w="7"
-              h="7"
-              mr={5}
-              ml={5}
-              shadow={5}
-              source={{
-                uri: "https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjB8fHByb2ZpbGV8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60",
-              }}
-            />
-            <Image
-              alignContent="center"
-              alt="Logo"
-              borderRadius="90"
-              w="7"
-              h="7"
-              mr={10}
-              ml={10}
-              shadow={5}
-              source={{
-                uri: "https://images.unsplash.com/photo-1497316730643-415fac54a2af?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8cHJvZmlsZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60",
-              }}
-            />
-          </ZStack>
-          <Text fontSize="10" ml="20" alignSelf="center" color="#3F38DD">
-            +20 Going
+        <View
+            style={{
+                marginTop:-15
+            }}
+        >
+          <Text isTruncated w="210">
+            {props.title}
           </Text>
-        </Flex>
-        <HStack alignItems="center" mt="2">
-          <Ionicons name="location" size={24} color="#716E90" />
-          <Text isTruncated w="180" fontSize="10">
-            224 Nguyen Tri Phuong, District 10
-          </Text>
-        </HStack>
+          <Flex w="100%" h="7" direction="row" mt="2">
+            <ZStack>
+              <Image
+                  alignContent="center"
+                  alt="Logo"
+                  borderRadius="90"
+                  w="7"
+                  h="7"
+                  source={{
+                    uri: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8cHJvZmlsZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60",
+                  }}
+              />
+              <Image
+                  alignContent="center"
+                  alt="Logo"
+                  borderRadius="90"
+                  w="7"
+                  h="7"
+                  mr={5}
+                  ml={5}
+                  shadow={5}
+                  source={{
+                    uri: "https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjB8fHByb2ZpbGV8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60",
+                  }}
+              />
+              <Image
+                  alignContent="center"
+                  alt="Logo"
+                  borderRadius="90"
+                  w="7"
+                  h="7"
+                  mr={10}
+                  ml={10}
+                  shadow={5}
+                  source={{
+                    uri: "https://images.unsplash.com/photo-1497316730643-415fac54a2af?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8cHJvZmlsZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60",
+                  }}
+              />
+            </ZStack>
+            <Text fontSize="10" ml="20" alignSelf="center" color="#3F38DD">
+              +20 Going
+            </Text>
+          </Flex>
+          <HStack alignItems="center" mt="2">
+            <Ionicons name="location" size={24} color="#716E90" />
+            <Text isTruncated w="180" fontSize="10">
+              {props.address}
+            </Text>
+          </HStack>
+        </View>
       </Box>
     </Pressable>
   );

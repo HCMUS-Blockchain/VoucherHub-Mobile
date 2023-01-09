@@ -67,16 +67,12 @@ V
 &src/games/Tile2048/constants/colors.js,b\b\bb7430256afeb2dfecf7b96cd6840965bfcc9c16
 t
 Dsrc/games/Tile2048/components/UI-components/CustomText.component.jsx,5\9\59e46a24e4dfe5cfd335d1098790a193a58b603f
-q
-Asrc/games/Tile2048/components/game-components/Board.component.jsx,b\0\b0022e85dd99ffabc4d71c91b514c92c04418dbb
 `
 0src/games/Tile2048/redux/actions/game.actions.js,4\4\44b3daa889ab45311270f54e91eeeaacdbdd52a8
 p
 @src/games/Tile2048/components/game-components/Tile.component.jsx,5\5\554c7f61a5e125f13feee0fcb291b5032e7db665
 G
 src/constants/filter.js,d\4\d4066ff7214d8f8e7d8246a9a6e076f0cc821a17
-P
- src/screens/UploadImageScreen.js,f\9\f9aa27d352e78b0d93dc77d60b4f8f9d62a47a3e
 D
 src/assets/cgra.json,b\0\b0e4a0fe2f3e26ea52f4ad49f2d0d228f22ce0d9
 B
@@ -86,8 +82,6 @@ B
 .gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
 ?
 babel.config.js,7\7\775bd43a34022cef87b6af825cbd551f29473f73
-N
-src/components/PuzzleDetail.js,6\7\673aaf3d1bb9f9096a650a7790457541bf2f5377
 M
 src/screens/RegisterScreen.js,4\f\4f73c50267de47a7ecd037da83f386b10a65bd0a
 A
@@ -130,8 +124,6 @@ S
 src/api/user.js,8\8\88a1988c7c48bcbda32b3c9e09bdea913a7b6c26
 B
 src/api/voucher.js,d\4\d4b71251366fcb2476472ef979ceb3242e4d9b1f
-M
-src/components/HistoryItem.js,2\a\2a9328f822ead9a9ea61ff3cba699a5d45261f2b
 O
 src/components/VoucherDetail.js,9\8\98afd8d0538f3cc7f07bfd6d685fcc8397222eb1
 M
@@ -160,3 +152,9 @@ W
 'src/games/QuizGame/src/screens/index.js,b\9\b9920b11d4b99f29c949fcce77611249089fb2ad
 H
 src/components/Header.js,e\5\e51f5a0439fa2d716c21a933fa2f850a0e5605c8
+B
+src/api/clients.js,5\d\5d374217d3be242b204c043e857acd7fe84da91f
+?
+src/api/game.js,3\3\33366ef6ce140bc59d792ea5d60f03cff1b8efcd
+T
+$src/navigations/StackSubNavigator.js,e\c\ec13ccb3793bb16615a6890a53d348c1d35a76ee

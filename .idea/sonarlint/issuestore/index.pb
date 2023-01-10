@@ -19,8 +19,6 @@ J
 src/screens/LoginScreen.js,c\1\c108fb269ec6e016818efb496b57f39ba492bfbf
 H
 src/assets/congrats.json,3\0\30153dc883ba8922c55c40976c316c4fe5300c5f
-H
-src/components/Loader.js,3\0\302df21011c35053905a3e1aae3479df354d5929
 K
 src/assets/nodatafound.json,7\d\7dd3502c5d43faab5772bd7df925090e608aab67
 Z
@@ -86,8 +84,6 @@ M
 src/screens/RegisterScreen.js,4\f\4f73c50267de47a7ecd037da83f386b10a65bd0a
 L
 src/screens/ProfileScreen.js,d\9\d9d45aa71a509d3956fb1a2d0c40a9e08d52a12d
-6
-App.js,a\4\a4a49f7b4c549593514920b942b5a787f2773862
 W
 'src/games/Tile2048/models/tile.model.js,b\7\b7a5bc18f29bf09158d32c3a1ce5b7e1d33f6ce4
 p
@@ -110,8 +106,6 @@ N
 src/games/ShakeIt/Gift/Gift.js,6\5\65d2bfd2e04789c936b3b7dd478d6a35df95ba70
 L
 src/context/LoginProvider.js,0\1\01be20766d00363d8a38f4dac2951f812b431155
-I
-src/api/pageMyVouchers.js,3\8\38f0112f28fb99abd094c8b6452f78c54e8cdf97
 J
 src/games/ShakeIt/Shake.js,f\4\f4756a242cab026c3df874f353cfd50be0672b9c
 S
@@ -123,11 +117,7 @@ B
 O
 src/components/VoucherDetail.js,9\8\98afd8d0538f3cc7f07bfd6d685fcc8397222eb1
 M
-src/components/VoucherItem.js,7\c\7cc7ce7639d1368e50fbfacbf755bab29ceab434
-M
 src/screens/ReceiveVoucher.js,b\f\bfd8a77f6b121fca2d2891394590f8fbba05b4a7
-P
- src/navigations/MainNavigator.js,b\c\bc5c62d2fc943132e5180fd6ff8f2951aa959132
 Q
 !src/navigations/StackNavigator.js,9\0\907e3382f679b438bcbbb35366cbfd5be720a811
 A
@@ -138,20 +128,14 @@ L
 src/screens/HistoryScreen.js,a\5\a5007fb60322ef19078bb21e54b3fa7c25683e0f
 I
 src/screens/MyVouchers.js,3\5\359ad0806e0a7a3698b642fd27338e1a7bcc4208
-P
- src/screens/VoucherListScreen.js,4\f\4f429607be4adc25e20a6200e7d89ab7619213b4
 C
 src/api/category.js,0\2\0276ccb8f5240ad9b3f730cfd234fb3c02437d95
 B
 src/api/history.js,5\3\53b699531da84081d92473ddb90b3221940b8e7a
 W
 'src/games/QuizGame/src/screens/index.js,b\9\b9920b11d4b99f29c949fcce77611249089fb2ad
-H
-src/components/Header.js,e\5\e51f5a0439fa2d716c21a933fa2f850a0e5605c8
 ?
 src/api/game.js,3\3\33366ef6ce140bc59d792ea5d60f03cff1b8efcd
-T
-$src/navigations/StackSubNavigator.js,e\c\ec13ccb3793bb16615a6890a53d348c1d35a76ee
 K
 src/games/QuizGame/index.js,b\6\b6972fb6d0ba97d61a1103e169cba1d6e18f30b1
 K
@@ -162,8 +146,6 @@ V
 &src/games/QuizGame/src/screens/Quiz.js,5\3\5322cdffa1084ed3702372a38689a00c54e71642
 L
 src/navigations/BottomNav.js,b\9\b9a6902cae23b36cd277e47ea4bc61d64a5bba08
-I
-src/screens/MainScreen.js,8\d\8db7f36bfc3c0148031cacadd09a92bb110fdb98
 A
 src/api/branch.js,0\9\0973c5d1946b6a493c5f568f32499b387c966b94
 W
@@ -176,3 +158,5 @@ q
 Asrc/games/Tile2048/components/game-components/Board.component.jsx,b\0\b0022e85dd99ffabc4d71c91b514c92c04418dbb
 <
 package.json,7\0\7030d0b2f71b999ff89a343de08c414af32fc93a
+O
+src/screens/PuzzleCollection.js,e\5\e5271b46e5838a1497db0ff616357b496ae26561

@@ -11,6 +11,7 @@ import QuizGame from "../games/QuizGame";
 import PuzzleCollection from "../screens/PuzzleCollection";
 import HistoryScreen from "../screens/HistoryScreen";
 import Shake from "../games/ShakeIt/Shake";
+import NotificationScreen from "../screens/NotificationScreen";
 
 const Stack = createNativeStackNavigator();
 const StackSubNavigator = () => {
@@ -39,6 +40,10 @@ const StackSubNavigator = () => {
             <Stack.Screen name="Shake" component={Shake} options={{headerShown: false}}/>
             <Stack.Screen name="PuzzleCollection" component={PuzzleCollection} options={{headerShown: false}}/>
             <Stack.Screen name="HistoryScreen" component={HistoryScreen} options={{headerShown: false}}/>
+            <Stack.Screen name="NotificationScreen" component={NotificationScreen} options={{
+                title: "Activity",
+                animation: "slide_from_right",
+            }}/>
             <Stack.Screen name="MyVouchers" component={MyVouchers} options={{
                 title: 'MyVouchers', //Set Header Title
                 headerTitle: "",

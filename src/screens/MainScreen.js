@@ -37,7 +37,9 @@ export default function MainScreen({navigation}) {
     }
   return (
     <>
-      <Header />
+      <Header
+        navigation={navigation}
+      />
       <HorizontalScrollViewFilter mt="10" />
       <HomeScreen />
     </>

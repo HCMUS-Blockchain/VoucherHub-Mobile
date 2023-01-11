@@ -1,18 +1,24 @@
 import {Box, Button, Flex, Heading, HStack, Image, ScrollView, Text, VStack,} from "native-base";
 import {Ionicons} from "@expo/vector-icons";
-import Voucher from "../components/VoucherHomeScreen";
+import Voucher from "../components/Voucher";
 import {useEffect, useState} from "react";
 import {getNewestCampaign} from "../api/campaign";
 import Loader from "../components/Loader";
+import Counterpart from "../components/Counterpart";
+import {getPopularBranch} from "../api/counterpart";
 
 
 const HomeScreen = () => {
     const [isLoading, setLoading] = useState(false);
     const [newestCampaigns, setNewestCampaign] = useState([]);
+    const [popularBranches, setPopularBranches] = useState([]);
     useEffect(() => {
         setLoading(true);
         getNewestCampaign().then((res) => {
             setNewestCampaign(res.data.campaigns);
+        })
+        getPopularBranch().then((res) => {
+            setPopularBranches(res.data.counterparts);
         })
         setLoading(false);
     }, []);
@@ -81,6 +87,18 @@ const HomeScreen = () => {
                     horizontal={true}
                     showsVerticalScrollIndicator={false}
                 >
+                    {
+                        popularBranches && popularBranches.map((item, index) => {
+                            return (
+                                <Counterpart key={index}
+                                         image={item.image}
+                                         shop={item.nameOfShop}
+                                         address={item.headquarter}
+                                         phone={item.phone}
+                                />
+                            )
+                        })
+                    }
                 </ScrollView>
                 <Flex
                     justify="space-between"

@@ -1,4 +1,5 @@
 import axios from "axios";
+import {getData, postData} from "./helper";
 
 exports.apiGeoapi = async (coordinate) => {
     const api =
@@ -8,4 +9,11 @@ exports.apiGeoapi = async (coordinate) => {
         url: api
     })
     return objectReceive?.data?.features[0]?.properties?.formatted
+}
+
+exports.getLocationNearBy = (latitude, longitude) => {
+    return postData("/api/stores/find/store-neary-by", {
+        latitude,
+        longitude,
+    })
 }

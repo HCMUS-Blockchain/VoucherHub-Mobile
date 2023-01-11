@@ -1,46 +1,9 @@
 import {Ionicons} from "@expo/vector-icons";
 import {HStack, Input, Pressable, StatusBar, Text, View, VStack} from "native-base";
 import React, {useEffect, useState} from "react";
-import * as Location from 'expo-location';
 import {getNumberUnSeenNoti} from "../api/notification";
-import {apiGeoapi} from "../api/location";
 
-const Header = ({navigation}) => {
-    const [location, setLocation] = useState(null);
-    const [errorMsg, setErrorMsg] = useState(null);
-    const [coordinate, setCoordinate] = useState(null);
-    const [address, setAddress] = useState(null);
-    useEffect(() => {
-        (async () => {
-
-            let { status } = await Location.requestForegroundPermissionsAsync();
-            if (status !== 'granted') {
-                setErrorMsg('Permission to access location was denied');
-                return;
-            }
-
-            let location = await Location.getCurrentPositionAsync({});
-            setLocation(location);
-            setCoordinate({
-                latitude: location.coords.latitude,
-                longitude: location.coords.longitude
-            })
-        })();
-    }, []);
-    let text = 'Waiting..';
-    if (errorMsg) {
-        text = errorMsg;
-    } else if (location) {
-        text = JSON.stringify(location);
-    }
-    useEffect( () => {
-        if (coordinate) {
-            getAddress(coordinate)
-        }
-    }, [coordinate])
-    const getAddress = async (coordinate) => {
-        setAddress(await apiGeoapi(coordinate))
-    }
+const Header = ({navigation,address}) => {
     const [number, setNumber] = useState([])
     useEffect(() => {
         getNumberUnSeenNoti().then((res) => {
@@ -84,11 +47,12 @@ const Header = ({navigation}) => {
                             fontSize="10"
                             fontWeight="bold"
                             alignSelf="center"
+                            textAlign="center"
                             style={{
                                 width: 200,
                             }}
                         >
-                            {address}
+                            {address?address:"Processing..."}
                         </Text>
                     </VStack>
                     <Pressable

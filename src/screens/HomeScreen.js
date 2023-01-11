@@ -6,12 +6,15 @@ import {getNewestCampaign} from "../api/campaign";
 import Loader from "../components/Loader";
 import Counterpart from "../components/Counterpart";
 import {getPopularBranch} from "../api/counterpart";
+import {getLocationNearBy} from "../api/location";
+import Store from "../components/Store";
 
 
-const HomeScreen = () => {
+const HomeScreen = ({coordinate}) => {
     const [isLoading, setLoading] = useState(false);
     const [newestCampaigns, setNewestCampaign] = useState([]);
     const [popularBranches, setPopularBranches] = useState([]);
+    const [storesNearby, setStoresNearby] = useState([]);
     useEffect(() => {
         setLoading(true);
         getNewestCampaign().then((res) => {
@@ -22,6 +25,14 @@ const HomeScreen = () => {
         })
         setLoading(false);
     }, []);
+
+    useEffect(()=>{
+        if (coordinate){
+            getLocationNearBy(coordinate.latitude,coordinate.longitude).then((res) => {
+                setStoresNearby(res.data.result);
+            })
+        }
+    },[coordinate])
     return (
         <ScrollView showsVerticalScrollIndicator={false}>
             <Box px="5" bgColor="white">
@@ -113,6 +124,24 @@ const HomeScreen = () => {
                         <Ionicons name="arrow-forward" size={24} color="black"/>
                     </Flex>
                 </Flex>
+                <ScrollView
+                    w="100%"
+                    horizontal={true}
+                    showsVerticalScrollIndicator={false}
+                >
+                    {
+                        storesNearby && storesNearby.map((item, index) => {
+                            return (
+                                <Store key={index}
+                                             image={item.image}
+                                             address={item.address}
+                                       title={item.title}
+                                       description={item.description}
+                                />
+                            )
+                        })
+                    }
+                </ScrollView>
             </Box>
         </ScrollView>
     );

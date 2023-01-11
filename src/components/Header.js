@@ -3,8 +3,8 @@ import {HStack, Input, Pressable, StatusBar, Text, View, VStack} from "native-ba
 import React, {useEffect, useState} from "react";
 import {getNumberUnSeenNoti} from "../api/notification";
 
-const Header = ({navigation}) => {
-    const [number,setNumber] = useState([])
+const Header = ({navigation,address}) => {
+    const [number, setNumber] = useState([])
     useEffect(() => {
         getNumberUnSeenNoti().then((res) => {
             setNumber(res.data.number)
@@ -31,7 +31,7 @@ const Header = ({navigation}) => {
                 direction="column"
                 alignItems="center"
                 w="100%"
-                h="120"
+                h="150"
                 borderBottomRadius={50}
             >
                 <HStack justifyContent="center">
@@ -47,8 +47,12 @@ const Header = ({navigation}) => {
                             fontSize="10"
                             fontWeight="bold"
                             alignSelf="center"
+                            textAlign="center"
+                            style={{
+                                width: 200,
+                            }}
                         >
-                            152B Tran Hung Dao, Quan 1, Tp.HCM
+                            {address?address:"Processing..."}
                         </Text>
                     </VStack>
                     <Pressable
@@ -62,11 +66,11 @@ const Header = ({navigation}) => {
                                 }}
                                 name="notifications" size={24} color="white"/>
                             {
-                                number>0?<View
+                                number > 0 ? <View
                                         style={{
                                             position: "absolute",
                                             top: 0,
-                                            left:20
+                                            left: 20
                                         }}
                                     >
                                         <Ionicons
@@ -75,15 +79,15 @@ const Header = ({navigation}) => {
                                             style={{
                                                 position: "absolute",
                                                 top: 2,
-                                                left:8,
-                                                color:"white",
-                                                fontSize:15,
+                                                left: 8,
+                                                color: "white",
+                                                fontSize: 15,
                                             }}
                                         >
-                                            {number>5?"5+":number}
+                                            {number > 5 ? "5+" : number}
                                         </Text>
                                     </View>
-                                    :null
+                                    : null
                             }
 
                         </View>

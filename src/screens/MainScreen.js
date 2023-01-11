@@ -6,8 +6,47 @@ import HomeScreen from "./HomeScreen";
 import {useEffect, useState} from "react";
 import * as Linking from "expo-linking";
 import {sendPuzzle, sendPuzzleEveryone} from "../api/puzzle";
+import * as Location from "expo-location";
+import {apiGeoapi} from "../api/location";
 
 export default function MainScreen({navigation}) {
+    //address
+    const [location, setLocation] = useState(null);
+    const [errorMsg, setErrorMsg] = useState(null);
+    const [coordinate, setCoordinate] = useState(null);
+    const [address, setAddress] = useState(null);
+    useEffect(() => {
+        (async () => {
+
+            let { status } = await Location.requestForegroundPermissionsAsync();
+            if (status !== 'granted') {
+                setErrorMsg('Permission to access location was denied');
+                return;
+            }
+
+            let location = await Location.getCurrentPositionAsync({});
+            setLocation(location);
+            setCoordinate({
+                latitude: location.coords.latitude,
+                longitude: location.coords.longitude
+            })
+        })();
+    }, []);
+    let text = 'Waiting..';
+    if (errorMsg) {
+        text = errorMsg;
+    } else if (location) {
+        text = JSON.stringify(location);
+    }
+    useEffect( () => {
+        if (coordinate) {
+            getAddress(coordinate)
+        }
+    }, [coordinate])
+    const getAddress = async (coordinate) => {
+        setAddress(await apiGeoapi(coordinate))
+    }
+    //
     const [result, setResult] = useState(null);
     const [hostname, setHostname] = useState(null);
     const [path, setPath] = useState(null);
@@ -38,10 +77,13 @@ export default function MainScreen({navigation}) {
   return (
     <>
       <Header
+          address={address}
         navigation={navigation}
       />
       <HorizontalScrollViewFilter mt="10" />
-      <HomeScreen />
+      <HomeScreen
+          coordinate={coordinate}
+      />
     </>
   );
 }
